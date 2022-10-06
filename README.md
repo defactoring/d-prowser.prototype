@@ -5,7 +5,7 @@
 - nodejs: v16.17
 - npm: v8.15
 
-## Get Start
+## Getting Started
 
 ```sh
 npm install
