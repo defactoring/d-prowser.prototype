@@ -8,5 +8,11 @@ const Container = styled.div`
 `;
 
 export const AppIcon: React.FC = () => {
-    return <Container />
+    return <div className="appicon">
+        <Container />
+        <img src={this.props.icon} />
+        <a src={this.props.url} />
+        <p>{this.props.title}</p>
+    </div>
+        
 }

@@ -4,9 +4,23 @@ import * as S from './style';
 import { AppIcon } from '../AppIcon';
 
 export const App = () => {
+  //配列の作成
+   const appIconList = [
+    {title:'youtube',icon:'',url:''},
+    {title:'facebook',icon:'',url:''},
+    {title:'amazon',icon:'',url:''}
+  ];
   return (
     <S.Container>
-      <AppIcon />
+      {appIconList.map((appIconItem) => {
+        return (
+          //propsを渡す
+          <AppIcon 
+           title={appIconItem.title}
+           icon={appIconItem.icon}
+           url={appIconItem.url}
+           />
+        )})}
     </S.Container>
   );
 }
