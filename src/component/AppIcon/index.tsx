@@ -7,6 +7,7 @@ const Container = styled.div`
     background-color: red;
 `;
 
+//propsを受け取る。
 export const AppIcon: React.FC<{ title: string; icon: string; url:string }>  = (props) => {
     return <div className="appicon">
         <Container />
