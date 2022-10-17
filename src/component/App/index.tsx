@@ -14,10 +14,7 @@ export const App = () => {
     <S.Container>
       {appIconList.map((appIconItem) => {
         return (
-<<<<<<< HEAD
-=======
-          //propsを渡す
->>>>>>> develop
+        //propsを渡す
           <AppIcon 
            title={appIconItem.title}
            icon={appIconItem.icon}
