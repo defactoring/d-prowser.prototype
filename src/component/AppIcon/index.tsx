@@ -7,12 +7,12 @@ const Container = styled.div`
     background-color: red;
 `;
 
-export const AppIcon: React.FC = () => {
+export const AppIcon: React.FC<{ title: string; icon: string; url:string }>  = (props) => {
     return <div className="appicon">
         <Container />
-        <img src={this.props.icon} />
-        <a src={this.props.url} />
-        <p>{this.props.title}</p>
+        <img src={props.icon} />
+        <a href={props.url} />
+        <p>{props.title}</p>
     </div>
         
 }
