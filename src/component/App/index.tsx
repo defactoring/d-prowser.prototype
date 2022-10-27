@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import * as S from './style';
 import { AppIcon } from '../AppIcon';
 
