@@ -44,10 +44,13 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run build
-        run: npm run build
+        run: |
+          npm install
+          npm run build
   
   # Single deploy job since we're just deploying
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
