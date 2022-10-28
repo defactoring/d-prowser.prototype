@@ -6,8 +6,7 @@ const IconImage = styled.img`
     height: 73px;
     border-radius: 5px;
 `;
-const URL = styled.a`
-    margin: 2% 5%;
+const LINK = styled.a`
     text-decoration: none;
     color: black;
 `;
@@ -18,9 +17,8 @@ const Title = styled.p`
 
 //propsを受け取る。
 export const AppIcon: React.FC<{ title: string; icon: string; url:string }>  = (props) => {
-    return <URL href={props.url} target="_blank">
+    return <LINK href={props.url} target="_blank">
         <IconImage src={props.icon} />
         <Title>{props.title}</Title>
-        </URL>
-        
+        </LINK>
 }
