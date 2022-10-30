@@ -1,11 +1,8 @@
 import React from 'react';
-import * as S from './style';
-import { AppIcon } from '../AppIcon';
+import { Contents } from '../Contents';
 
 export const App = () => {
-  return (
-    <S.Container>
-      <AppIcon />
-    </S.Container>
-  );
-}
+    return (
+      <Contents/>
+    );
+  }
