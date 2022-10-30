@@ -1,7 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import * as S from './style';
-import styled from "styled-components"
 import { AppIcon } from '../AppIcon';
 
 export const Contents = () => {
@@ -22,7 +20,7 @@ export const Contents = () => {
       {appIconList.map((appIconItem) => {
         return (
           //todo propsでユーザーが設定したアプリタイトル・アイコン画像・アプリURLを渡す。
-          <AppIcon 
+          <AppIcon
            key={appIconItem.title}
            title={appIconItem.title}
            icon={appIconItem.icon}
