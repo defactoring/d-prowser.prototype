@@ -22,10 +22,14 @@ const Title = styled.p`
   text-align: center;
 `;
 
+const favicon = (url: string) => {
+  const {hostname} = new URL(url)
+  return `https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://${hostname}&size=128`
+}
+
 export const AppIcon: React.FC<{ title: string; icon: string; url: string }> = (props) => {
-  const favicon = props.url && new URL(props.url).origin
   return <Link href={props.url} target='_blank'>
-    <IconImage src={`${favicon}/favicon.ico`}/>
+    <IconImage src={`${favicon(props.url)}`}/>
     <Title>{props.title}</Title>
   </Link>
 }
