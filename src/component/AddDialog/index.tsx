@@ -1,6 +1,7 @@
 import React, {ChangeEventHandler, FormEventHandler, useCallback, useState} from 'react';
 import {Dialog} from '@mui/material';
 import {Bookmark} from '../context/type';
+import {useBookmark} from '../hooks';
 
 type Props = {
   open: boolean
@@ -8,14 +9,15 @@ type Props = {
 }
 
 export const AddDialog: React.FC<Props> = ({open, onClose}) => {
+  const {add} = useBookmark()
   const [bookmark, setBookmark] = useState<Bookmark>({
-    name: '',
+    title: '',
     url: '',
     icon: '',
   })
-  const setName: ChangeEventHandler<HTMLInputElement> = useCallback((e) => setBookmark({
+  const setTitle: ChangeEventHandler<HTMLInputElement> = useCallback((e) => setBookmark({
     ...bookmark,
-    name: e.target.value
+    title: e.target.value
   }), [bookmark, setBookmark])
   const setUrl: ChangeEventHandler<HTMLInputElement> = useCallback((e) => setBookmark({
     ...bookmark,
@@ -24,11 +26,12 @@ export const AddDialog: React.FC<Props> = ({open, onClose}) => {
   const handleSubmit: FormEventHandler = useCallback((e) => {
     e.preventDefault()
     console.log(bookmark)
+    add(bookmark)
     onClose()
-  }, [bookmark, onClose])
+  }, [bookmark, add, onClose])
   return <Dialog open={open} onClose={onClose} onSubmit={handleSubmit}>
     <form action='#' method='get'>
-      <input type='text' onChange={setName}/>
+      <input autoFocus type='text' onChange={setTitle}/>
       <input type='text' onChange={setUrl}/>
       <button type='submit'>submit</button>
     </form>
