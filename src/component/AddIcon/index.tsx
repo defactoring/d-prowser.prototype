@@ -1,18 +1,11 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import * as S from './style';
-import {Dialog} from '@mui/material';
+import {useDialog} from '../hooks';
 
 export const AddIcon: React.FC = () => {
-  const [open, setOpen] = useState<boolean>(false)
-  const handleOpen = useCallback(() => setOpen(true), [setOpen])
-  const handleClose = useCallback(() => setOpen(false), [setOpen])
-  return <>
-    <S.Container onClick={handleOpen}>
-      <S.Icon onClick={handleOpen}/>
+  const {open} = useDialog()
+  return <S.Container role='button' aria-pressed={false} onClick={open}>
+      <S.Icon />
       <S.Title>add</S.Title>
     </S.Container>
-    <Dialog open={open} onClose={handleClose}>
-      dialog
-    </Dialog>
-  </>
 }
