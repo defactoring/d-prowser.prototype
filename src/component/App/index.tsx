@@ -6,14 +6,13 @@ import {AddDialog} from '../AddDialog';
 
 const initial = JSON.stringify({bookmarks: [
     {title:'youtube',icon:'',url:'https://www.youtube.com/'},
-    {title:'facebook',icon:'',url:''},
-    {title:'amazon',icon:'',url:''},
-    {title:'twitter',icon:'',url:''},
-    {title:'memo',icon:'',url:''},
-    {title:'zoom',icon:'',url:''},
-    {title:'instagram',icon:'',url:''},
-    {title:'Maps',icon:'',url:''},
-    {title:'iTunes',icon:'',url:''}
+    {title:'facebook',icon:'',url:'https://www.facebook.com'},
+    {title:'amazon',icon:'',url:'https://www.amazon.co.jp/'},
+    {title:'twitter',icon:'',url:'https://www.twitter.com'},
+    {title:'memo',icon:'',url:'https://keep.google.com'},
+    {title:'zoom',icon:'',url:'https://zoom.us'},
+    {title:'instagram',icon:'',url:'https://instagram.com'},
+    {title:'Maps',icon:'',url:'https://map.google.com'},
   ]});
 
 const getBookmarks = () => JSON.parse(window.localStorage.getItem('bookmarks') ?? initial).bookmarks as Bookmark[]

@@ -25,14 +25,13 @@ export const AddDialog: React.FC<Props> = ({open, onClose}) => {
   }), [bookmark, setBookmark])
   const handleSubmit: FormEventHandler = useCallback((e) => {
     e.preventDefault()
-    console.log(bookmark)
     add(bookmark)
     onClose()
   }, [bookmark, add, onClose])
   return <Dialog open={open} onClose={onClose} onSubmit={handleSubmit}>
     <form action='#' method='get'>
-      <input autoFocus type='text' onChange={setTitle}/>
-      <input type='text' onChange={setUrl}/>
+      <input placeholder='name' autoFocus type='text' onChange={setTitle}/>
+      <input placeholder='url' type='text' onChange={setUrl}/>
       <button type='submit'>submit</button>
     </form>
   </Dialog>

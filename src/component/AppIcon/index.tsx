@@ -22,10 +22,10 @@ const Title = styled.p`
   text-align: center;
 `;
 
-//propsを受け取る。
 export const AppIcon: React.FC<{ title: string; icon: string; url: string }> = (props) => {
+  const favicon = props.url && new URL(props.url).origin
   return <Link href={props.url} target='_blank'>
-    <IconImage src={props.icon}/>
+    <IconImage src={`${favicon}/favicon.ico`}/>
     <Title>{props.title}</Title>
   </Link>
 }
