@@ -2,14 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   box-sizing: border-box;
+  padding: 16px;
   width: 100vw;
-  height: 100vh;
-  padding: 32px 160px;
   display: flex;
-  flex-wrap : wrap;
-  align-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  justify-content: flex-start;
-  flex: grip;
-  gap: 5% 10%;
+  flex-wrap: wrap;
+  gap: 8px;
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { AppIcon } from '../AppIcon';
+import {AddIcon} from '../AddIcon';
 
 export const Contents = () => {
   //配列の作成
@@ -17,6 +18,7 @@ export const Contents = () => {
   ];
   return (
     <S.Container>
+      <AddIcon />
       {appIconList.map((appIconItem) => {
         return (
           //todo propsでユーザーが設定したアプリタイトル・アイコン画像・アプリURLを渡す。
