@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {TextField} from '@mui/material';
-import {Close} from '@mui/icons-material';
+import {Clear} from '@mui/icons-material';
 
 export const IconImage = styled.img`
   width: 72px;
@@ -8,17 +8,16 @@ export const IconImage = styled.img`
   border-radius: 5px;
 `;
 
-export const Overlay = styled(Close)`
+export const Overlay = styled(Clear)`
   cursor: pointer;
   border-radius: 4px;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 72px;
-    height: 72px;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 72px;
+  height: 72px;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.6);
 `;
 
 export const Container = styled.div`
