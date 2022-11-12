@@ -1,6 +1,7 @@
 import React, {ChangeEventHandler, FormEventHandler, useCallback, useState} from 'react';
-import {Dialog} from '@mui/material';
 import {add, create, Bookmark} from '../../feature/bookmark';
+import * as S from './style';
+import {Dialog,TextField,Button} from '@mui/material';
 
 type Props = {
   open: boolean
@@ -26,10 +27,11 @@ export const AddDialog: React.FC<Props> = ({open, onClose}) => {
     onClose()
   }, [bookmark, onClose])
   return <Dialog open={open} onClose={onClose} onSubmit={handleSubmit}>
-    <form action='#' method='get'>
-      <input placeholder='name' autoFocus type='text' onChange={setTitle}/>
-      <input placeholder='url' type='text' onChange={setUrl}/>
-      <button type='submit'>submit</button>
-    </form>
+    <S.FormAddDialog action='#' method='get'>
+      <S.H2Title>Add Icon</S.H2Title>
+      <TextField id="standard-search" label="name" type="text" variant="standard" fullWidth onChange={setTitle}/>
+      <TextField id="standard-search" label="url" type="text" variant="standard" fullWidth onChange={setUrl}/>
+      <Button variant="contained" type='submit' fullWidth>Add</Button>
+    </S.FormAddDialog>
   </Dialog>
 }
