@@ -18,6 +18,9 @@ export const Icon = styled.div`
   background-color: #fff;
   -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
   box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Title = styled.p`

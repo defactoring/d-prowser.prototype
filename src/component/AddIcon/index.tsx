@@ -1,21 +1,26 @@
 import React from 'react';
 import * as S from './style';
 import {useDialog} from '../hooks';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {styled, Tooltip} from '@mui/material';
+import {Add} from '@mui/icons-material';
 
+const Icon = styled(Add)`
+  border-radius: 50%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+`;
 export const AddIcon: React.FC = () => {
   const {open} = useDialog()
-  const iconStyle: React.CSSProperties = {
-    fontSize: 50,
-    //todo styled-conpornentsを使ってfontawesomeを表示させたい
-    //todo 十時マークを真ん中に配置したい
-    //todo 十時の色を薄いグレーにしたい
-  };
   return <S.Container role='button' aria-pressed={false} onClick={open}>
-        <S.Icon>
-          <FontAwesomeIcon style={iconStyle} icon={faPlus} />
-        </S.Icon>
-      <S.Title>add</S.Title>{/* todo マウスカーソルをボタンの上に照らしたときに「編集」と表示させたい */}
+      <Tooltip title='add'>
+          <Icon />
+      </Tooltip>
     </S.Container>
 }
