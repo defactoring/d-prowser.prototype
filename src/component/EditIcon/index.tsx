@@ -16,11 +16,12 @@ const Icon = styled(Edit)`
   align-items: center;
   font-size: 64px;
 `;
+
 export const EditIcon: React.FC = () => {
   const {open} = useDialog()
-  return <S.Container role='button' aria-pressed={false} onClick={open}>
-      <Tooltip title='edit'>
+  return <Tooltip title='edit'>
+        <S.Container role='button' aria-pressed={false} onClick={open}>
           <Icon />
-      </Tooltip>
     </S.Container>
+  </Tooltip>
 }

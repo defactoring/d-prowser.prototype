@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Container = styled.div`
   cursor: pointer;
@@ -9,18 +9,6 @@ export const Container = styled.div`
   text-decoration: none;
   color: black;
   gap: 5px;
-`;
-
-export const Icon = styled.div`
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background-color: #fff;
-  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Title = styled.p`

@@ -1,8 +1,9 @@
 import React from 'react';
 import * as S from './style';
 import {useDialog} from '../hooks';
-import {styled, Tooltip} from '@mui/material';
+import {Tooltip} from '@mui/material';
 import {Add} from '@mui/icons-material';
+import styled from '@emotion/styled';
 
 const Icon = styled(Add)`
   border-radius: 50%;
@@ -16,11 +17,12 @@ const Icon = styled(Add)`
   align-items: center;
   font-size: 64px;
 `;
+
 export const AddIcon: React.FC = () => {
   const {open} = useDialog()
-  return <S.Container role='button' aria-pressed={false} onClick={open}>
-      <Tooltip title='add'>
+  return <Tooltip title='add'>
+        <S.Container role='button' aria-pressed={false} onClick={open}>
           <Icon />
-      </Tooltip>
     </S.Container>
+  </Tooltip>
 }
