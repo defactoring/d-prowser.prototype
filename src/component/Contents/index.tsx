@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './style';
 import {AppIcon} from '../AppIcon';
 import {AddIcon} from '../AddIcon';
+import {EditIcon} from '../EditIcon';
 import {get} from '../../feature/bookmark';
 
 export const Contents = () => {
@@ -9,6 +10,7 @@ export const Contents = () => {
   return (
     <S.Container>
       <AddIcon/>
+      <EditIcon/>
       {bookmarks.map((appIconItem) => {
         return (
           <AppIcon
