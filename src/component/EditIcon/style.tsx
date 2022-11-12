@@ -1,17 +1,20 @@
 import styled from '@emotion/styled';
+import {Edit} from '@mui/icons-material';
 
 export const Container = styled.div`
   cursor: pointer;
   width: 72px;
-  display: inline-flex;
-  flex-direction: column;
+  height: 72px;
+  display: flex;
   justify-content: center;
-  text-decoration: none;
-  color: black;
-  gap: 5px;
+  align-items: center;
+  background-color: #fff;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  border-radius: 50%;
 `;
 
-export const Title = styled.p`
-  margin: 0;
-  text-align: center;
+export const Icon = styled(Edit)`
+  width: 48px;
+  height: 48px;
 `;
