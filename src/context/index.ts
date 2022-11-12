@@ -1,14 +1,11 @@
 import {createContext} from 'react';
 
 type Context = {
-  dialog: {
-    open: () => void
-  }
+  mode: 'normal' | 'edit'
+  setMode: (mode: 'normal' | 'edit') => void
 }
 
 export const context = createContext<Context>({
-  dialog: {
-    open: () => {
-    }
-  }
+  mode: 'normal',
+  setMode: () => {}
 })

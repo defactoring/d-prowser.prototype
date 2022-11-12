@@ -8,13 +8,14 @@ const IconImage = styled.img`
 `;
 
 const Link = styled.a`
+  padding-bottom: 9px;
   width: 72px;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   text-decoration: none;
   color: black;
-  gap: 5px;
+  gap: 4px;
 `;
 
 const Title = styled.p`

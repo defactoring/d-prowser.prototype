@@ -1,17 +1,14 @@
-import React, {useCallback, useRef, useState} from 'react';
-import {Contents} from '../Contents';
-import {context} from '../context';
-import {AddDialog} from '../AddDialog';
+import React, {useRef, useState} from 'react';
+import {context} from '../../context';
+import {NormalContents} from '../NormalContents';
+import {EditContents} from '../EditContents';
 
 export const App = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const handleOpen = useCallback(() => setOpen(true), [setOpen])
-  const handleClose = useCallback(() => setOpen(false), [setOpen])
-  const value = useRef({dialog: {open: handleOpen}}).current
+  const [mode, setMode] = useState<'normal' | 'edit'>('normal')
+  const value = useRef({mode, setMode}).current
   return (
     <context.Provider value={value}>
-      <Contents/>
-      <AddDialog open={open} onClose={handleClose}/>
+      {mode === 'normal' ? <NormalContents /> : <EditContents />}
     </context.Provider>
   );
 }

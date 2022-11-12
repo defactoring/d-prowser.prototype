@@ -1,5 +1,5 @@
 import React, {ChangeEventHandler, FormEventHandler, useCallback, useState} from 'react';
-import {add, create, Bookmark} from '../../feature/bookmark';
+import {add, create, Bookmark} from '../../../feature/bookmark';
 import * as S from './style';
 import {Dialog,TextField,Button} from '@mui/material';
 

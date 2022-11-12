@@ -3,15 +3,18 @@ import * as S from './style';
 import {AppIcon} from '../AppIcon';
 import {AddIcon} from '../AddIcon';
 import {EditIcon} from '../EditIcon';
-import {get} from '../../feature/bookmark';
+import {get} from '../../../feature/bookmark';
 
-export const Contents = () => {
-  const bookmarks = get()
+type Props = {
+  open: () => void
+}
+
+export const Contents: React.FC<Props> = ({open}) => {
   return (
     <S.Container>
-      <AddIcon/>
+      <AddIcon open={open}/>
       <EditIcon/>
-      {bookmarks.map((appIconItem) => {
+      {get().map((appIconItem) => {
         return (
           <AppIcon
             key={appIconItem.id}
