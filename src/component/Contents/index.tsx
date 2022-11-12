@@ -1,23 +1,24 @@
 import React from 'react';
 import * as S from './style';
-import { AppIcon } from '../AppIcon';
+import {AppIcon} from '../AppIcon';
 import {AddIcon} from '../AddIcon';
-import {useBookmark} from '../hooks';
+import {get} from '../../feature/bookmark';
 
 export const Contents = () => {
-  const {get} = useBookmark()
+  const bookmarks = get()
   return (
     <S.Container>
-      <AddIcon />
-      {get().map((appIconItem) => {
+      <AddIcon/>
+      {bookmarks.map((appIconItem) => {
         return (
           <AppIcon
-           key={appIconItem.title}
-           title={appIconItem.title}
-           icon={appIconItem.icon}
-           url={appIconItem.url}
-           />
-        )})}
+            key={appIconItem.id}
+            title={appIconItem.title}
+            icon={appIconItem.icon}
+            url={appIconItem.url}
+          />
+        )
+      })}
     </S.Container>
   );
 }
