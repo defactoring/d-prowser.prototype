@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const FormAddDialog = styled.form`
     box-sizing: border-box;

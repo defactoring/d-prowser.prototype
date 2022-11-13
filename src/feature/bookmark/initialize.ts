@@ -10,3 +10,7 @@ export const INITIAL_BOOKMARKS = [
   create('instagram', 'https://instagram.com'),
   create('Maps', 'https://map.google.com'),
 ];
+
+export const initialize = () => {
+  window.localStorage.setItem('bookmarks', JSON.stringify(INITIAL_BOOKMARKS))
+}
