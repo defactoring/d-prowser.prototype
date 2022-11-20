@@ -6,6 +6,7 @@ type Props = {
   open: () => void
 }
 
+// ブックマーク追加
 export const AddIcon: React.FC<Props> = ({open}) => {
   return <Tooltip title='add'>
         <S.Container role='button' aria-pressed={false} onClick={open}>

@@ -1,5 +1,6 @@
 import {create} from './create';
 
+// 初期ブックマーク
 export const INITIAL_BOOKMARKS = [
   create('youtube', 'https://www.youtube.com/'),
   create('facebook', 'https://www.facebook.com'),
@@ -11,6 +12,7 @@ export const INITIAL_BOOKMARKS = [
   create('Maps', 'https://map.google.com'),
 ];
 
+// ブラウザにブックマーク配列を登録
 export const initialize = () => {
   window.localStorage.setItem('bookmarks', JSON.stringify(INITIAL_BOOKMARKS))
 }

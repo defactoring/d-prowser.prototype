@@ -22,7 +22,7 @@ const Title = styled.p`
   margin: 0;
   text-align: center;
 `;
-
+// アプリアイコン
 export const AppIcon: React.FC<{ title: string; icon: string; url: string }> = (props) => {
   return <Link href={props.url} target='_blank'>
     <IconImage src={props.icon}/>
