@@ -1,4 +1,6 @@
-// ブックマーク型を定義
+/**
+ * ブックマーク型
+ */
 export type Bookmark = {
   id: string;
   title: string;
