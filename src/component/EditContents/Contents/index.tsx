@@ -5,7 +5,9 @@ import {get} from '../../../feature/bookmark';
 import {AppIcon} from '../AppIcon';
 import {InitializeIcon} from '../InitializeIcon';
 
-// 追加ボタン,戻るボタン,アプリアイコン
+/**
+ * 初期化ボタン, 戻るボタン, アプリアイコン
+ */
 export const Contents = () => {
   const [bookmarks, setBookmarks] = useState(get())
   const handleRefresh = useCallback(() => setBookmarks(get()), [setBookmarks])
