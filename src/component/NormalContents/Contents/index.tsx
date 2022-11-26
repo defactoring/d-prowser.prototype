@@ -9,8 +9,10 @@ type Props = {
   open: () => void
 }
 
-// コンテンツ
-// 画面にアイコンオブジェクトを表示させる。
+/**
+ * コンテンツ
+ * 画面にアイコンオブジェクトを表示させる。
+ */
 export const Contents: React.FC<Props> = ({open}) => {
   return (
     <S.Container>
