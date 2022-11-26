@@ -1,7 +1,9 @@
 import {Bookmark} from './type';
 import {v4 as uuid} from 'uuid'
 
-// ファビコン表示モジュール
+/**
+ * ファビコン表示モジュール
+ */
 const favicon = (url: string) => {
   const {hostname} = new URL(url)
   return `https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://${hostname}&size=128`
