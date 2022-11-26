@@ -13,7 +13,7 @@ export const Contents = () => {
   const handleRefresh = useCallback(() => setBookmarks(get()), [setBookmarks])
   return (
     <S.Container>
-      <InitializeIcon refresh={handleRefresh} />{/* 追加ボタン */}
+      <InitializeIcon refresh={handleRefresh} />{/* 初期化ボタン */}
       <BackIcon/>{/* 戻るボタン */}
       {bookmarks.map(bookmark => {
         return <AppIcon key={bookmark.id} bookmark={bookmark} refresh={handleRefresh} />/* アプリアイコン */
