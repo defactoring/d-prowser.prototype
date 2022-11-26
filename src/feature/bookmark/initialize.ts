@@ -1,6 +1,8 @@
 import {create} from './create';
 
-// 初期ブックマーク
+/**
+ * 初期ブックマーク
+ */
 export const INITIAL_BOOKMARKS = [
   create('youtube', 'https://www.youtube.com/'),
   create('facebook', 'https://www.facebook.com'),
