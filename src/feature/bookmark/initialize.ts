@@ -14,7 +14,9 @@ export const INITIAL_BOOKMARKS = [
   create('Maps', 'https://map.google.com'),
 ];
 
-// ブラウザにブックマーク配列を登録
+/**
+ * ブックマークを初期化
+ */
 export const initialize = () => {
   window.localStorage.setItem('bookmarks', JSON.stringify(INITIAL_BOOKMARKS))
 }
