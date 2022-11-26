@@ -7,7 +7,9 @@ type Props = {
   bookmark: Bookmark
   refresh: () => void
 }
-// アプリアイコン
+/**
+ * アプリアイコン
+ */
 export const AppIcon: React.FC<Props> = (props) => {
   const handleClick = useCallback(() => {
     remove(props.bookmark.id)
