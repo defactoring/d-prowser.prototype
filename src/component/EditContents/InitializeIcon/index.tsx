@@ -6,8 +6,10 @@ import {initialize} from '../../../feature/bookmark';
 type Props = {
   refresh: () => void
 }
-// アプリ追加ボタン
-// アプリ追加ダイアログを開く。
+/**
+ * 初期化ボタン
+ * 初期化する
+ */
 export const InitializeIcon: React.FC<Props> = ({refresh}) => {
   const handleClick = useCallback(() => {
     initialize()
