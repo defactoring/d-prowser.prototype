@@ -1,5 +1,7 @@
 import {Contents} from './Contents';
-// 追加ボタン
+/**
+ * 編集ボタン
+ */
 export const EditContents = () => {
   return <Contents />
 }
