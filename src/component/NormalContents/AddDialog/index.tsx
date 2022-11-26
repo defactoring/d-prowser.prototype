@@ -8,6 +8,10 @@ type Props = {
   onClose: () => void
 }
 
+/**
+ * アプリ追加ダイアログ
+ * テキストフィールドからタイトルとアプリのURLを取得しアプリアイコンを表示させる。
+ */
 export const AddDialog: React.FC<Props> = ({open, onClose}) => {
   const [bookmark, setBookmark] = useState<Pick<Bookmark, 'title' | 'url'>>({
     title: '',

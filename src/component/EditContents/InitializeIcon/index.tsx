@@ -6,7 +6,10 @@ import {initialize} from '../../../feature/bookmark';
 type Props = {
   refresh: () => void
 }
-
+/**
+ * 初期化ボタン
+ * 初期化する
+ */
 export const InitializeIcon: React.FC<Props> = ({refresh}) => {
   const handleClick = useCallback(() => {
     initialize()

@@ -9,11 +9,15 @@ type Props = {
   open: () => void
 }
 
+/**
+ * コンテンツ
+ * 画面にアイコンオブジェクトを表示させる。
+ */
 export const Contents: React.FC<Props> = ({open}) => {
   return (
     <S.Container>
-      <AddIcon open={open}/>
-      <EditIcon/>
+      <AddIcon open={open}/>{/* 追加ボタン */}
+      <EditIcon/>{/* 編集ボタン */}
       {get().map((appIconItem) => {
         return (
           <AppIcon
@@ -21,7 +25,7 @@ export const Contents: React.FC<Props> = ({open}) => {
             title={appIconItem.title}
             icon={appIconItem.icon}
             url={appIconItem.url}
-          />
+          />// アプリアイコン
         )
       })}
     </S.Container>
