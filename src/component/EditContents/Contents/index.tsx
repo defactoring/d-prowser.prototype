@@ -6,6 +6,7 @@ import {AppIcon} from '../AppIcon';
 import {InitializeIcon} from '../InitializeIcon';
 
 /**
+ * 編集モード画面
  * 初期化ボタン, 戻るボタン, アプリアイコン
  */
 export const Contents = () => {
