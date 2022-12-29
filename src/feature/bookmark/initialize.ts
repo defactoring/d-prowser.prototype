@@ -1,4 +1,4 @@
-import {create} from './create';
+import { create } from './create'
 
 /**
  * 初期ブックマーク
@@ -12,7 +12,7 @@ export const INITIAL_BOOKMARKS = [
   create('zoom', 'https://zoom.us'),
   create('instagram', 'https://instagram.com'),
   create('Maps', 'https://map.google.com'),
-];
+]
 
 /**
  * ブックマークを初期化
