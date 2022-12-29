@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 
 export const Container = styled.div`
   box-sizing: border-box;
@@ -9,4 +9,4 @@ export const Container = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 16px;
-`;
+`

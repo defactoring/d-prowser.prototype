@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
-import {TextField} from '@mui/material';
-import {Clear} from '@mui/icons-material';
+import { TextField } from '@mui/material'
+import { Clear } from '@mui/icons-material'
 
 export const IconImage = styled.img`
   width: 72px;
   height: 72px;
   border-radius: 5px;
-`;
+`
 
 export const Overlay = styled(Clear)`
   cursor: pointer;
@@ -18,7 +18,7 @@ export const Overlay = styled(Clear)`
   height: 72px;
   color: rgba(255, 255, 255, 0.8);
   background: rgba(0, 0, 0, 0.6);
-`;
+`
 
 export const Container = styled.div`
   position: relative;
@@ -29,6 +29,6 @@ export const Container = styled.div`
   text-decoration: none;
   color: black;
   gap: 3px;
-`;
+`
 
-export const Title = styled(TextField)``;
+export const Title = styled(TextField)``

@@ -1,5 +1,5 @@
-import {Bookmark} from './type';
-import {get} from './get';
+import { Bookmark } from './type'
+import { get } from './get'
 
 /**
  * ブックマーク追加

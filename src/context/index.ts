@@ -1,4 +1,4 @@
-import {createContext} from 'react';
+import { createContext } from 'react'
 
 type Context = {
   mode: 'normal' | 'edit'
@@ -7,5 +7,5 @@ type Context = {
 
 export const context = createContext<Context>({
   mode: 'normal',
-  setMode: () => {}
+  setMode: () => void 0,
 })

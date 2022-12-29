@@ -1,9 +1,9 @@
-import React, {useCallback, useState} from 'react';
-import * as S from './style';
-import {BackIcon} from '../BackIcon';
-import {Bookmark, get} from '../../../feature/bookmark';
-import {AppIcon} from '../AppIcon';
-import {InitializeIcon} from '../InitializeIcon';
+import React, { useCallback, useState } from 'react'
+import * as S from './style'
+import { BackIcon } from '../BackIcon'
+import { Bookmark, get } from '../../../feature/bookmark'
+import { AppIcon } from '../AppIcon'
+import { InitializeIcon } from '../InitializeIcon'
 
 /**
  * 編集モード画面
@@ -16,11 +16,15 @@ export const Contents = () => {
   const handleRefresh = useCallback(() => setBookmarks(get()), [setBookmarks])
   return (
     <S.Container>
-      <InitializeIcon refresh={handleRefresh} />{/* 初期化ボタン */}
-      <BackIcon/>{/* 戻るボタン */}
-      {bookmarks.map(bookmark => {
-        return <AppIcon key={bookmark.id} bookmark={bookmark} refresh={handleRefresh} />/* アプリアイコン */
+      <InitializeIcon refresh={handleRefresh} />
+      {/* 初期化ボタン */}
+      <BackIcon />
+      {/* 戻るボタン */}
+      {bookmarks.map((bookmark) => {
+        return (
+          <AppIcon key={bookmark.id} bookmark={bookmark} refresh={handleRefresh} />
+        ) /* アプリアイコン */
       })}
     </S.Container>
-  );
+  )
 }
