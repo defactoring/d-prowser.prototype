@@ -1,5 +1,6 @@
 import { Bookmark } from './type'
 import { get } from './get'
+import { writeBookmarkData } from '../firebase'
 
 /**
  * ブックマーク追加
@@ -10,4 +11,5 @@ export const add = (bookmark: Bookmark) => {
   const bookmarks = get()
   // ブックマーク配列に新規ブックマークを追加し、ブラウザに保存
   window.localStorage.setItem('bookmarks', JSON.stringify([...bookmarks, bookmark]))
+  writeBookmarkData(bookmark)
 }
