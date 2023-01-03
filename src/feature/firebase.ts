@@ -1,10 +1,4 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs } from 'firebase/firestore'
-import { Bookmark } from './bookmark'
-import { doc, setDoc } from 'firebase/firestore'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import app from 'firebase/compat/app'
 
 // firebase設定
 const firebaseConfig = {
@@ -19,28 +13,4 @@ const firebaseConfig = {
 }
 
 // Firebase初期化
-const app = initializeApp(firebaseConfig)
-
-const db = getFirestore(app)
-
-/**
- * ブックマークをDBに登録
- */
-export const writeBookmarkData = (bookmark: Bookmark) => {
-  setDoc(doc(db, 'bookmarks', bookmark.id), {
-    id: bookmark.id,
-    title: bookmark.title,
-    url: bookmark.url,
-    icon: bookmark.icon,
-  })
-}
-/**
- * DBからブックマーク配列を取得
- * @returns
- */
-export const getBookmarkData = async (): Promise<Bookmark[]> => {
-  const bookmarks = await getDocs(collection(db, 'bookmarks')).then((snapshot) =>
-    snapshot.docs.map((doc) => doc.data()),
-  )
-  return bookmarks as Bookmark[] // ブックマークの配列をDBから取得する方法が不明です。。
-}
+export const firebase = app.initializeApp(firebaseConfig)

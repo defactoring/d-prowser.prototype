@@ -3,7 +3,7 @@ import { Bookmark } from '../bookmark'
 export interface BookmarkStorage {
   /**
    * DBからブックマーク配列を取得
-   * 
+   *
    * @returns Bookmark[]
    */
   read(): Promise<Bookmark[]>
