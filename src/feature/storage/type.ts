@@ -13,9 +13,9 @@ export interface BookmarkStorage {
   /**
    * DBのブックマークを削除
    */
-  //delete(bookmark: Bookmark): Promise<void>
+  delete(id: Bookmark['id']): Promise<void>
   /**
    * DBのブックマークを変更
    */
-  //update(bookmark: Bookmark): Promise<void>
+  // update(bookmark: Bookmark): Promise<void>
 }
