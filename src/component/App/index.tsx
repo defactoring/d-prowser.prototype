@@ -1,15 +1,24 @@
-import React, { useRef, useState } from 'react'
-import { context } from '../../context'
+import React, { useLayoutEffect, useRef, useState } from 'react'
+import { appContext, bookmarksContext } from '../../context'
 import { NormalContents } from '../NormalContents'
 import { EditContents } from '../EditContents'
+import { FirestoreStorage } from '../../feature/storage'
+import { Bookmark, get } from '../../feature/bookmark'
 
 // React大元
 export const App = () => {
   const [mode, setMode] = useState<'normal' | 'edit'>('normal')
-  const value = useRef({ mode, setMode }).current
+  const storage = new FirestoreStorage()
+  const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
+  const value = useRef({ mode, setMode, storage }).current
+  useLayoutEffect(() => {
+    get(storage).then(setBookmarks)
+  }, [setBookmarks])
   return (
-    <context.Provider value={value}>
-      {mode === 'normal' ? <NormalContents /> : <EditContents />}
-    </context.Provider>
+    <appContext.Provider value={value}>
+      <bookmarksContext.Provider value={{ bookmarks, setBookmarks }}>
+        {mode === 'normal' ? <NormalContents /> : <EditContents />}
+      </bookmarksContext.Provider>
+    </appContext.Provider>
   )
 }

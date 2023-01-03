@@ -1,15 +1,14 @@
 import { Bookmark } from './type'
 import { get } from './get'
-import { writeBookmarkData } from '../firebase'
+import { BookmarkStorage } from '../storage'
 
 /**
  * ブックマーク追加
  * ブックマークを渡し、画面ローカルストレージにブックマークを追加する。
  */
-export const add = (bookmark: Bookmark) => {
+export const add = async (storage: BookmarkStorage, bookmark: Bookmark) => {
   // ブラウザからブックマーク配列を取得
-  const bookmarks = get()
-  // ブックマーク配列に新規ブックマークを追加し、ブラウザに保存
-  window.localStorage.setItem('bookmarks', JSON.stringify([...bookmarks, bookmark]))
-  writeBookmarkData(bookmark)
+  const bookmarks = await get(storage)
+  // ブックマーク配列に新規ブックマークを追加し、保存
+  await storage.write([...bookmarks, bookmark])
 }
