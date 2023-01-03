@@ -30,7 +30,7 @@ export class FirestoreStorage implements BookmarkStorage {
     return bookmarks as Bookmark[]
   }
 
-  async write(bookmarks: Bookmark[]): Promise<void> {
-    await setDoc(doc(this.db, /* TODO: user id */ 'bookmarks'), bookmarks)
+  async create(bookmark: Bookmark): Promise<void> {
+    await setDoc(doc(this.db, 'bookmarks', bookmark.id), bookmark)
   }
 }

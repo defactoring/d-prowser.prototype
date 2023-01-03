@@ -19,6 +19,6 @@ export const rename = async (
     // 引数のタイトルに変更
     target.title = title
     // ブックマーク配列をブラウザに保存
-    await storage.write(bookmarks)
+    // await storage.write(bookmarks)
   }
 }
