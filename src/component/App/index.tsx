@@ -4,7 +4,7 @@ import { NormalContents } from '../NormalContents'
 import { EditContents } from '../EditContents'
 import { FirestoreStorage } from '../../feature/storage'
 import { Bookmark, get } from '../../feature/bookmark'
-import SignInScreen from '../SignIn'
+import SignInScreen from '../SignInScreen'
 
 // React大元
 export const App = () => {
