@@ -1,5 +1,4 @@
 import { Bookmark } from './type'
-import { get } from './get'
 import { BookmarkStorage } from '../storage'
 
 /**

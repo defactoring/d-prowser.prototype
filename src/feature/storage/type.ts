@@ -3,7 +3,8 @@ import { Bookmark } from '../bookmark'
 export interface BookmarkStorage {
   /**
    * DBからブックマーク配列を取得
-   * @returns　Bookmark[]
+   * 
+   * @returns Bookmark[]
    */
   read(): Promise<Bookmark[]>
   /**
@@ -17,5 +18,5 @@ export interface BookmarkStorage {
   /**
    * DBのブックマークを変更
    */
-  // update(bookmark: Bookmark): Promise<void>
+  update(bookmark: Bookmark): Promise<void>
 }

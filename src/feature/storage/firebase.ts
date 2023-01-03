@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs, deleteDoc } from 'firebase/firestore'
+import { getFirestore, collection, getDocs, deleteDoc, updateDoc } from 'firebase/firestore'
 import { Bookmark } from '../bookmark'
 import { doc, setDoc } from 'firebase/firestore'
 import { BookmarkStorage } from './type'
@@ -37,7 +37,14 @@ export class FirestoreStorage implements BookmarkStorage {
   /**
    * DBのブックマークを削除
    */
-  async delete(id: Bookmark['id']): Promise<void>{
+  async delete(id: Bookmark['id']): Promise<void> {
     await deleteDoc(doc(this.db, 'bookmarks', id))
+  }
+
+  /**
+   * DBのブックマークを変更
+   */
+  async update(bookmark: Bookmark): Promise<void> {
+    await updateDoc(doc(this.db, 'bookmarks', bookmark.id), bookmark)
   }
 }

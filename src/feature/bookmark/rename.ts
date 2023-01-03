@@ -1,6 +1,6 @@
 import { Bookmark } from './type'
-import { get } from './get'
 import { BookmarkStorage } from '../storage'
+import { get } from './get'
 
 /**
  * ブックマークのタイトル変更
@@ -19,6 +19,6 @@ export const rename = async (
     // 引数のタイトルに変更
     target.title = title
     // ブックマーク配列をブラウザに保存
-    // await storage.write(bookmarks)
+    await storage.update(target)
   }
 }
