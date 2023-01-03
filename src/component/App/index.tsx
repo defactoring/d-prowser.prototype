@@ -4,6 +4,7 @@ import { NormalContents } from '../NormalContents'
 import { EditContents } from '../EditContents'
 import { FirestoreStorage } from '../../feature/storage'
 import { Bookmark, get } from '../../feature/bookmark'
+import SignInScreen from '../SignIn'
 
 // React大元
 export const App = () => {
@@ -15,10 +16,12 @@ export const App = () => {
     get(storage).then(setBookmarks)
   }, [setBookmarks])
   return (
-    <appContext.Provider value={value}>
-      <bookmarksContext.Provider value={{ bookmarks, setBookmarks }}>
-        {mode === 'normal' ? <NormalContents /> : <EditContents />}
-      </bookmarksContext.Provider>
-    </appContext.Provider>
+    <SignInScreen>
+      <appContext.Provider value={value}>
+        <bookmarksContext.Provider value={{ bookmarks, setBookmarks }}>
+          {mode === 'normal' ? <NormalContents /> : <EditContents />}
+        </bookmarksContext.Provider>
+      </appContext.Provider>
+    </SignInScreen>
   )
 }
