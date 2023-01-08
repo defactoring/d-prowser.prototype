@@ -13,4 +13,4 @@ const firebaseConfig = {
 }
 
 // Firebase初期化
-export const firebase = app.initializeApp(firebaseConfig)
+export const firebaseApp = app.initializeApp(firebaseConfig)
