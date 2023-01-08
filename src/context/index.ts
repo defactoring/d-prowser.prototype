@@ -8,10 +8,7 @@ type AuthContext = {
   setUser: Dispatch<SetStateAction<firebase.User | null>>
 }
 
-export const authContext = createContext<AuthContext>({
-  user: null,
-  setUser: () => void 0,
-})
+export const authContext = createContext<AuthContext>({} as AuthContext)
 
 type AppContext = {
   user: firebase.User
@@ -20,19 +17,11 @@ type AppContext = {
   storage: BookmarkStorage
 }
 
-export const appContext = createContext<AppContext>({
-  user: {} as firebase.User,
-  mode: 'normal',
-  setMode: () => void 0,
-  storage: {} as BookmarkStorage,
-})
+export const appContext = createContext<AppContext>({} as AppContext)
 
 type BookmarksContext = {
   bookmarks: Bookmark[]
-  setBookmarks: (bookmarks: Bookmark[]) => void
+  setBookmarks: Dispatch<SetStateAction<Bookmark[]>>
 }
 
-export const bookmarksContext = createContext<BookmarksContext>({
-  bookmarks: [],
-  setBookmarks: () => void 0,
-})
+export const bookmarksContext = createContext<BookmarksContext>({} as BookmarksContext)
