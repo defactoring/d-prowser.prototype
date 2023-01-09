@@ -1,9 +1,10 @@
 // Import FirebaseAuth and firebase.
-import React, { useEffect, useState } from 'react'
-import StyledFirebaseAuth from './FirebaseAuth'
+import React, { useContext, useEffect } from 'react'
+import { FirebaseAuth } from './FirebaseAuth'
 import 'firebase/compat/auth'
-import { firebase } from '../../feature/firebase'
+import { firebaseApp } from '../../feature/firebase'
 import { EmailAuthProvider } from 'firebase/auth'
+import { authContext } from '../../context'
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -17,35 +18,23 @@ const uiConfig = {
   },
 }
 
-type Props = {
-  children: React.ReactNode
-}
-
-const SignInScreen: React.FC<Props> = ({ children }) => {
-  const [isSignedIn, setIsSignedIn] = useState(false) // Local signed-in state.
+const SignInScreen: React.FC = () => {
+  const { setUser } = useContext(authContext)
 
   // Listen to the Firebase Auth state and set the local state.
   useEffect(() => {
-    const unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => {
-      setIsSignedIn(!!user)
+    const unregisterAuthObserver = firebaseApp.auth().onAuthStateChanged((user) => {
+      setUser(user)
     })
     return () => unregisterAuthObserver() // Make sure we un-register Firebase observers when the component unmounts.
   }, [])
 
-  if (!isSignedIn) {
-    return (
-      <div>
-        <h1>My App</h1>
-        <p>Please sign-in:</p>
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-      </div>
-    )
-  }
   return (
-    <>
-      {children}
-      <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
-    </>
+    <div>
+      <h1>My App</h1>
+      <p>Please sign-in:</p>
+      <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()} />
+    </div>
   )
 }
 
