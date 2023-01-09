@@ -12,8 +12,7 @@ type Props = {
  */
 export const InitializeIcon: React.FC<Props> = ({ refresh }) => {
   const handleClick = useCallback(() => {
-    initialize()
-    refresh()
+    initialize().then(refresh)
   }, [refresh])
   return (
     <Tooltip title='initialize'>

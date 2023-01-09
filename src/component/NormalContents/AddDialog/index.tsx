@@ -1,7 +1,8 @@
 import React, { ChangeEventHandler, FormEventHandler, useCallback, useState } from 'react'
-import { add, create, Bookmark } from '../../../feature/bookmark'
+import { add, create, get, Bookmark } from '../../../feature/bookmark'
 import * as S from './style'
 import { Dialog, TextField, Button } from '@mui/material'
+import { useBookmarks, useStorage } from '../../../hooks'
 
 type Props = {
   open: boolean
@@ -33,10 +34,13 @@ export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
       }),
     [bookmark, setBookmark],
   )
+  const { setBookmarks } = useBookmarks()
+  const { storage } = useStorage()
   const handleSubmit: FormEventHandler = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault()
-      add(create(bookmark.title, bookmark.url))
+      await add(storage, create(bookmark.title, bookmark.url))
+      await get(storage).then(setBookmarks)
       onClose()
     },
     [bookmark, onClose],

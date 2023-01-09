@@ -17,6 +17,6 @@ export const INITIAL_BOOKMARKS = [
 /**
  * ブックマークを初期化
  */
-export const initialize = () => {
+export const initialize = async () => {
   window.localStorage.setItem('bookmarks', JSON.stringify(INITIAL_BOOKMARKS))
 }

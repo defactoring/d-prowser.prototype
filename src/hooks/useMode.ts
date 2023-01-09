@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { context } from '../context'
+import { appContext } from '../context'
 
 export const useMode = () => {
-  const { mode, setMode } = useContext(context)
+  const { mode, setMode } = useContext(appContext)
   return { mode, setMode }
 }
