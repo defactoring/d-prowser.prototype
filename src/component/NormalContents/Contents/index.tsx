@@ -3,7 +3,7 @@ import * as S from './style'
 import { AppIcon } from '../AppIcon'
 import { AddIcon } from '../AddIcon'
 import { EditIcon } from '../EditIcon'
-import { get } from '../../../feature/bookmark'
+import { useBookmarks } from '../../../hooks'
 
 type Props = {
   open: () => void
@@ -14,13 +14,14 @@ type Props = {
  * 画面にアイコンオブジェクトを表示させる。
  */
 export const Contents: React.FC<Props> = ({ open }) => {
+  const { bookmarks } = useBookmarks()
   return (
     <S.Container>
       <AddIcon open={open} />
       {/* 追加ボタン */}
       <EditIcon />
       {/* 編集ボタン */}
-      {get().map((appIconItem) => {
+      {bookmarks.map((appIconItem) => {
         return (
           <AppIcon
             key={appIconItem.id}
