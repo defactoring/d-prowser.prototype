@@ -8,7 +8,7 @@ import { get } from './get'
 export const rename = async (
   storage: BookmarkStorage,
   id: Bookmark['id'],
-  title: Bookmark['name'],
+  name: Bookmark['name'],
 ) => {
   // ブラウザからブックマーク配列を取得
   const bookmarks: Bookmark[] = await get(storage)
@@ -17,7 +17,7 @@ export const rename = async (
   // 引数のIDと一致するブックマークオブジェクトが存在するか判定
   if (target !== undefined) {
     // 引数のタイトルに変更
-    target.name = title
+    target.name = name
     // ブックマーク配列をブラウザに保存
     await storage.update(target)
   }
