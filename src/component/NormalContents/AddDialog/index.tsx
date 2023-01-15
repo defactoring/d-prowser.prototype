@@ -1,8 +1,7 @@
-import React, { ChangeEventHandler, FormEventHandler, useCallback, useState } from 'react'
-import { add, create, get, Bookmark } from '../../../feature/bookmark'
+import React from 'react'
 import * as S from './style'
 import { Dialog, TextField, Button } from '@mui/material'
-import { useBookmarks, useStorage } from '../../../hooks'
+import { useBookmarkForm } from './useBookmarkForm'
 
 type Props = {
   open: boolean
@@ -14,61 +13,31 @@ type Props = {
  * テキストフィールドからタイトルとアプリのURLを取得しアプリアイコンを表示させる。
  */
 export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
-  const [bookmark, setBookmark] = useState<Pick<Bookmark, 'title' | 'url'>>({
-    title: '',
-    url: '',
-  })
-  const setTitle: ChangeEventHandler<HTMLInputElement> = useCallback(
-    (e) =>
-      setBookmark({
-        ...bookmark,
-        title: e.target.value,
-      }),
-    [bookmark, setBookmark],
-  )
-  const setUrl: ChangeEventHandler<HTMLInputElement> = useCallback(
-    (e) =>
-      setBookmark({
-        ...bookmark,
-        url: e.target.value,
-      }),
-    [bookmark, setBookmark],
-  )
-  const { setBookmarks } = useBookmarks()
-  const { storage } = useStorage()
-  const handleSubmit: FormEventHandler = useCallback(
-    async (e) => {
-      e.preventDefault()
-      await add(storage, create(bookmark.title, bookmark.url))
-      await get(storage).then(setBookmarks)
-      onClose()
-    },
-    [bookmark, onClose],
-  )
+  const { register, onSubmit, errors } = useBookmarkForm({ onSuccess: onClose })
   return (
-    <Dialog open={open} onClose={onClose} onSubmit={handleSubmit}>
-      <S.FormAddDialog action='#' method='get'>
-        <S.H2Title>Add Icon</S.H2Title>
+    <Dialog open={open} onClose={onClose}>
+      <S.Form onSubmit={onSubmit}>
+        <S.Title>Add Icon</S.Title>
         <TextField
-          id='standard-search'
+          {...register('name')}
           label='name'
           type='text'
           variant='standard'
           fullWidth
-          onChange={setTitle}
+          error={errors.name !== undefined}
         />
         <TextField
-          id='standard-search'
+          {...register('url')}
           label='url'
           type='text'
           variant='standard'
           fullWidth
-          onChange={setUrl}
+          error={errors.url !== undefined}
         />
         <Button variant='contained' type='submit' fullWidth>
           Add
         </Button>
-      </S.FormAddDialog>
+      </S.Form>
     </Dialog>
   )
 }

@@ -31,8 +31,8 @@ export const AppIcon: React.FC<Props> = (props) => {
       {/* アイコンを表示 */}
       <S.Overlay role='button' aria-pressed={false} onClick={handleRemove} />
       {/* 編集モードの時表示されるバツボタン */}
-      <S.Title
-        defaultValue={props.bookmark.title}
+      <S.Name
+        defaultValue={props.bookmark.name}
         variant='standard'
         size='small'
         onBlur={handleRename}

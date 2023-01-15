@@ -3,7 +3,7 @@
  */
 export type Bookmark = {
   id: string
-  title: string
+  name: string
   url: string
   icon: string
 }
