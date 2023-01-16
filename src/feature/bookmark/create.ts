@@ -13,10 +13,10 @@ const favicon = (url: string) => {
  * ブックマークオブジェクトを作成
  * タイトル・URL・アイコンを渡し、ブックマークを返す。
  */
-export const create = (title: string, url: string, icon?: string): Bookmark => {
+export const create = (name: string, url: string, icon?: string): Bookmark => {
   return {
     id: uuid(),
-    title,
+    name: name,
     icon: icon || favicon(url),
     url,
   }

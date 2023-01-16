@@ -14,7 +14,7 @@ type Props = {
  */
 export const AppIcon: React.FC<Props> = (props) => {
   const { storage } = useStorage()
-  // titlestateの値を更新し、ブラウザに保存されているブックマークのidと一致するtitleを更新する関数を定義
+  // name stateの値を更新し、ブラウザに保存されているブックマークのidと一致するnameを更新する関数を定義
   const handleRename: FocusEventHandler<HTMLInputElement> = useCallback(
     (e) => {
       rename(storage, props.bookmark.id, e.target.value).then(props.refresh)
@@ -31,8 +31,8 @@ export const AppIcon: React.FC<Props> = (props) => {
       {/* アイコンを表示 */}
       <S.Overlay role='button' aria-pressed={false} onClick={handleRemove} />
       {/* 編集モードの時表示されるバツボタン */}
-      <S.Title
-        defaultValue={props.bookmark.title}
+      <S.Name
+        defaultValue={props.bookmark.name}
         variant='standard'
         size='small'
         onBlur={handleRename}

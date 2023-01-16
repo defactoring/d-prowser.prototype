@@ -18,18 +18,18 @@ const Link = styled.a`
   gap: 4px;
 `
 
-const Title = styled.p`
+const Name = styled.p`
   margin: 0;
   text-align: center;
 `
 /**
  * アプリアイコン
  */
-export const AppIcon: React.FC<{ title: string; icon: string; url: string }> = (props) => {
+export const AppIcon: React.FC<{ name: string; icon: string; url: string }> = (props) => {
   return (
     <Link href={props.url} target='_blank'>
       <IconImage src={props.icon} />
-      <Title>{props.title}</Title>
+      <Name>{props.name}</Name>
     </Link>
   )
 }

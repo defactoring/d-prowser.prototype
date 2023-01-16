@@ -31,4 +31,4 @@ export const Container = styled.div`
   gap: 3px;
 `
 
-export const Title = styled(TextField)``
+export const Name = styled(TextField)``

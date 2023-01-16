@@ -25,7 +25,7 @@ export const Contents: React.FC<Props> = ({ open }) => {
         return (
           <AppIcon
             key={appIconItem.id}
-            title={appIconItem.title}
+            name={appIconItem.name}
             icon={appIconItem.icon}
             url={appIconItem.url}
           /> // アプリアイコン
