@@ -10,7 +10,11 @@ import firebase from 'firebase/compat'
 type Props = {
   user: firebase.User
 }
-
+/**
+ * ログイン機能
+ * @param param0 
+ * @returns 
+ */
 const Authenticated: React.FC<Props> = ({ user }) => {
   const [mode, setMode] = useState<'normal' | 'edit'>('normal')
   const storage = new FirestoreStorage(user)
@@ -27,13 +31,19 @@ const Authenticated: React.FC<Props> = ({ user }) => {
     </appContext.Provider>
   )
 }
-
+/**
+ * 
+ * @returns 
+ */
 const Content: React.FC = () => {
   const { user } = useContext(authContext)
   return <>{user === null ? <SignInScreen /> : <Authenticated user={user} />}</>
 }
 
-// React大元
+/**
+ * React大元
+ * @returns 
+ */
 export const App = () => {
   const [user, setUser] = useState<firebase.User | null>(null)
   return (

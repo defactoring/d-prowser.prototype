@@ -3,6 +3,9 @@ import * as S from './style'
 import { Dialog, TextField, Button } from '@mui/material'
 import { useBookmarkForm } from './useBookmarkForm'
 
+/**
+ * プロップス型の定義
+ */
 type Props = {
   open: boolean
   onClose: () => void
@@ -13,6 +16,7 @@ type Props = {
  * テキストフィールドからタイトルとアプリのURLを取得しアプリアイコンを表示させる。
  */
 export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
+  // 
   const { register, onSubmit, errors } = useBookmarkForm({ onSuccess: onClose })
   return (
     <Dialog open={open} onClose={onClose}>

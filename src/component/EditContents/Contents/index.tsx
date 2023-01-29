@@ -17,14 +17,17 @@ export const Contents: React.FC = () => {
   const handleRefresh = useCallback(() => get(storage).then(setBookmarks), [setBookmarks])
   return (
     <S.Container>
-      <InitializeIcon refresh={handleRefresh} />
-      {/* 初期化ボタン */}
-      <BackIcon />
-      {/* 戻るボタン */}
+      <S.EditContents>
+        {/* 初期化ボタン */}
+        <InitializeIcon refresh={handleRefresh} />
+        {/* 戻るボタン */}
+        <BackIcon />
+      </S.EditContents>
       {bookmarks.map((bookmark) => {
         return (
+          /* アプリアイコン */
           <AppIcon key={bookmark.id} bookmark={bookmark} refresh={handleRefresh} />
-        ) /* アプリアイコン */
+        ) 
       })}
     </S.Container>
   )

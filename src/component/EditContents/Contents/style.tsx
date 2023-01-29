@@ -10,3 +10,10 @@ export const Container = styled.div`
   flex-wrap: wrap;
   gap: 16px;
 `
+
+export const EditContents = styled.div`
+  position: fixed;
+  bottom: 40px;
+  display: flex;
+  gap: 25px;
+`
