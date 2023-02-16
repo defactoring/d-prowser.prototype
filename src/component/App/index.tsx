@@ -11,9 +11,7 @@ type Props = {
   user: firebase.User
 }
 /**
- * ログイン機能
- * @param param0 
- * @returns 
+ * 認証機能を提供する
  */
 const Authenticated: React.FC<Props> = ({ user }) => {
   const [mode, setMode] = useState<'normal' | 'edit'>('normal')
@@ -32,8 +30,9 @@ const Authenticated: React.FC<Props> = ({ user }) => {
   )
 }
 /**
- * 
- * @returns 
+ * コンテンツ画面
+ * サインインされていない状態はログイン画面
+ * サインインされている状態はコンテンツ画面
  */
 const Content: React.FC = () => {
   const { user } = useContext(authContext)
@@ -42,7 +41,6 @@ const Content: React.FC = () => {
 
 /**
  * React大元
- * @returns 
  */
 export const App = () => {
   const [user, setUser] = useState<firebase.User | null>(null)
