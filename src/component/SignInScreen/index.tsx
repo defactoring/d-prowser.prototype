@@ -17,7 +17,11 @@ const uiConfig = {
     signInSuccessWithAuthResult: () => false,
   },
 }
-
+/**
+ * サインインスクリーンタグ
+ * ログイン画面を表示
+ * @returns 
+ */
 const SignInScreen: React.FC = () => {
   const { setUser } = useContext(authContext)
 
@@ -31,8 +35,8 @@ const SignInScreen: React.FC = () => {
 
   return (
     <div>
-      <h1>My App</h1>
-      <p>Please sign-in:</p>
+      <h1>D-Prowser</h1>
+      <p>ログインフォーム</p>
       <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()} />
     </div>
   )

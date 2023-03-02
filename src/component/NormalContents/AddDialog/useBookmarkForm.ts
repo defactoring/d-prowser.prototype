@@ -7,15 +7,25 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 type Inputs = Pick<Bookmark, 'name' | 'url'>
 
+/**
+ * 入力されたブックマークの名前とURLの
+ * 入力チェックを行う
+ */
 const schema = z.object({
   name: z.string().min(1),
   url: z.string().url(),
 })
-
+/**
+ * Props型定義
+ */
 type Props = {
   onSuccess: () => void
 }
-
+/**
+ * ブックマーク登録フォーム関数
+ * @param param0 
+ * @returns 
+ */
 export const useBookmarkForm = ({ onSuccess }: Props) => {
   const {
     register,

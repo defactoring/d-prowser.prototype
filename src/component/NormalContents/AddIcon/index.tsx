@@ -7,7 +7,7 @@ type Props = {
 }
 
 /**
- * ブックマーク追加
+ * ブックマーク追加アイコン
  */
 export const AddIcon: React.FC<Props> = ({ open }) => {
   return (

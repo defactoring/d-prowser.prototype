@@ -2,6 +2,8 @@ import styled from '@emotion/styled'
 import { Add } from '@mui/icons-material'
 
 export const Container = styled.div`
+  flex-wrap: wrap;
+  gap: 16px;
   cursor: pointer;
   width: 72px;
   height: 72px;

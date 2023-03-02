@@ -10,7 +10,9 @@ import firebase from 'firebase/compat'
 type Props = {
   user: firebase.User
 }
-
+/**
+ * 認証機能を提供する
+ */
 const Authenticated: React.FC<Props> = ({ user }) => {
   const [mode, setMode] = useState<'normal' | 'edit'>('normal')
   const storage = new FirestoreStorage(user)
@@ -27,13 +29,19 @@ const Authenticated: React.FC<Props> = ({ user }) => {
     </appContext.Provider>
   )
 }
-
+/**
+ * コンテンツ画面
+ * サインインされていない状態はログイン画面
+ * サインインされている状態はコンテンツ画面
+ */
 const Content: React.FC = () => {
   const { user } = useContext(authContext)
   return <>{user === null ? <SignInScreen /> : <Authenticated user={user} />}</>
 }
 
-// React大元
+/**
+ * React大元
+ */
 export const App = () => {
   const [user, setUser] = useState<firebase.User | null>(null)
   return (
