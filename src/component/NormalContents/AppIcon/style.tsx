@@ -3,29 +3,33 @@ import styled from '@emotion/styled'
 export const Container = styled.div`
   position: relative;
   border-radius: 4px;
-  padding: 12px 8px 4px;
+  padding: 8px 8px 4px;
 
   :hover {
     background: lightgray;
   }
 
   @media screen and (min-width: 600px) {
-    padding: 20px 16px 12px;
+    padding: 24px 16px 8px;
   }
 `
 
 export const Menu = styled.button`
   position: absolute;
-  top: 0;
-  right: 0;
   cursor: pointer;
   background: none;
   border: none;
-  display: inline-flex;
+  display: none;
   align-items: center;
   height: 16px;
   appearance: none;
   color: #f7fafd;
+
+  @media screen and (min-width: 600px) {
+    display: inline-flex;
+    top: 4px;
+    right: 0;
+  }
 `
 
 export const Link = styled.a`
