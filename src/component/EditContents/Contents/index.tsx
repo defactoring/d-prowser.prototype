@@ -27,7 +27,7 @@ export const Contents: React.FC = () => {
         return (
           /* アプリアイコン */
           <AppIcon key={bookmark.id} bookmark={bookmark} refresh={handleRefresh} />
-        ) 
+        )
       })}
     </S.Container>
   )

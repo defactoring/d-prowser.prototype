@@ -23,8 +23,8 @@ type Props = {
 }
 /**
  * ブックマーク登録フォーム関数
- * @param param0 
- * @returns 
+ * @param param0
+ * @returns
  */
 export const useBookmarkForm = ({ onSuccess }: Props) => {
   const {
