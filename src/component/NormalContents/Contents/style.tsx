@@ -3,13 +3,17 @@ import styled from '@emotion/styled'
 export const Container = styled.div`
   box-sizing: border-box;
   padding: 16px;
-  margin-top: 25px;
   width: 100vw;
+  min-height: 100vh;
+`
+
+export const AppContents = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 0;
+  margin-bottom: 120px;
 
   @media screen and (min-width: 600px) {
     max-width: 800px;
@@ -26,6 +30,9 @@ export const Container = styled.div`
 export const EditContents = styled.div`
   position: fixed;
   bottom: 40px;
+  left: 0;
+  right: 0;
   display: flex;
+  justify-content: center;
   gap: 25px;
 `

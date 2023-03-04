@@ -17,24 +17,26 @@ export const Contents: React.FC<Props> = ({ open }) => {
   const { bookmarks } = useBookmarks()
   return (
     <S.Container>
+      <S.AppContents>
+        {bookmarks.map((appIconItem) => {
+          return (
+            // アプリアイコン
+            <AppIcon
+              open={open}
+              key={appIconItem.id}
+              name={appIconItem.name}
+              icon={appIconItem.icon}
+              url={appIconItem.url}
+            />
+          )
+        })}
+      </S.AppContents>
       <S.EditContents>
         {/* 追加ボタン */}
         <AddIcon open={open} />
         {/* 編集ボタン */}
         <EditIcon />
       </S.EditContents>
-      {bookmarks.map((appIconItem) => {
-        return (
-          // アプリアイコン
-          <AppIcon
-            open={open}
-            key={appIconItem.id}
-            name={appIconItem.name}
-            icon={appIconItem.icon}
-            url={appIconItem.url}
-          />
-        )
-      })}
     </S.Container>
   )
 }
