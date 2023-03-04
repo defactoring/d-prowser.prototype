@@ -9,18 +9,17 @@ export const Container = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 16px;
-  @media screen and (min-width:600px) {
+  gap: 0;
+
+  @media screen and (min-width: 600px) {
     max-width: 800px;
-    margin: 0 auto;
-    margin-top: 40px;
-    gap: 40px;
+    margin: 40px auto 0;
+    gap: 8px;
   }
-  @media screen and (min-width:1280px) {
+  @media screen and (min-width: 1280px) {
     max-width: 1280px;
-    margin: 0 auto;
-    margin-top: 40px;
-    gap: 80px;
+    margin: 40px auto 0;
+    gap: 48px;
   }
 `
 

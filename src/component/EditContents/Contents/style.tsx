@@ -10,13 +10,13 @@ export const Container = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 16px;
-  @media screen and (min-width:600px) {
+  @media screen and (min-width: 600px) {
     max-width: 800px;
     margin: 0 auto;
     margin-top: 40px;
     gap: 40px;
   }
-  @media screen and (min-width:1280px) {
+  @media screen and (min-width: 1280px) {
     max-width: 1280px;
     margin: 0 auto;
     margin-top: 40px;

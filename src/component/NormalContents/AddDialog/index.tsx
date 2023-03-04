@@ -16,7 +16,7 @@ type Props = {
  * テキストフィールドからタイトルとアプリのURLを取得しアプリアイコンを表示させる。
  */
 export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
-  // 
+  //
   const { register, onSubmit, errors } = useBookmarkForm({ onSuccess: onClose })
   return (
     <Dialog open={open} onClose={onClose}>

@@ -1,34 +1,23 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import * as S from './style'
+import { MoreHoriz } from '@mui/icons-material'
 
-const IconImage = styled.img`
-  width: 72px;
-  height: 72px;
-  border-radius: 5px;
-`
-
-const Link = styled.a`
-  width: 72px;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  text-decoration: none;
-  color: black;
-  gap: 4px;
-`
-
-const Name = styled.p`
-  margin: 0;
-  text-align: center;
-`
 /**
  * アプリアイコン
  */
-export const AppIcon: React.FC<{ name: string; icon: string; url: string }> = (props) => {
+export const AppIcon: React.FC<{ open: () => void; name: string; icon: string; url: string }> = ({
+  open,
+  ...props
+}) => {
   return (
-    <Link href={props.url} target='_blank'>
-      <IconImage src={props.icon} />
-      <Name>{props.name}</Name>
-    </Link>
+    <S.Container>
+      <S.Menu onClick={open}>
+        <MoreHoriz fontSize='large' />
+      </S.Menu>
+      <S.Link href={props.url} target='_blank'>
+        <S.IconImage src={props.icon} />
+        <S.Name>{props.name}</S.Name>
+      </S.Link>
+    </S.Container>
   )
 }
