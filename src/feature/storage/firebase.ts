@@ -1,5 +1,13 @@
 // Import the functions you need from the SDKs you need
-import { getFirestore, collection, getDocs, deleteDoc, updateDoc } from 'firebase/firestore'
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  deleteDoc,
+  updateDoc,
+  orderBy,
+  query,
+} from 'firebase/firestore'
 import { Bookmark } from '../bookmark'
 import { doc, setDoc } from 'firebase/firestore'
 import { BookmarkStorage } from './type'
@@ -12,9 +20,9 @@ export class FirestoreStorage implements BookmarkStorage {
   constructor(private readonly user: firebase.User) {}
 
   async read(): Promise<Bookmark[]> {
-    const bookmarks = await getDocs(collection(this.db, 'users', this.user.uid, 'bookmarks')).then(
-      (snapshot) => snapshot.docs.map((doc) => doc.data()),
-    )
+    const bookmarks = await getDocs(
+      query(collection(this.db, 'users', this.user.uid, 'bookmarks'), orderBy('name')),
+    ).then((snapshot) => snapshot.docs.map((doc) => doc.data()))
     return bookmarks as Bookmark[]
   }
 
