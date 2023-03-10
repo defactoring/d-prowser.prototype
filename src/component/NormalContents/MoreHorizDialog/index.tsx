@@ -1,11 +1,10 @@
 import React from 'react'
-import * as S from './style'
-import { EditDialog } from '../EditDialog'
 import { Dialog } from '@mui/material'
-import { useCallback, useState, MouseEventHandler } from 'react'
+import { useCallback, MouseEventHandler } from 'react'
 import { Bookmark } from '../../../feature/bookmark'
-import { remove } from '../../../feature/bookmark/remove'
+import { remove, get } from '../../../feature/bookmark/'
 import { useStorage } from '../../../hooks'
+import { useBookmarks } from '../../../hooks'
 
 /**
  * プロップス型の定義
@@ -13,29 +12,26 @@ import { useStorage } from '../../../hooks'
 type Props = {
     open: boolean
     onClose: () => void
-    name: string
-    url: string
+    openDialog: () => void
+    bookmark: Bookmark
 }
 
 export const MoreHorizDialog: React.FC<Props> = (props) => {
-    const {open, onClose} = props
-    // 編集画面の操作
-    const [isShowEditDialog, setIsEditDialogShow] = useState<boolean>(false)
-    const showEditDialog = useCallback(() => setIsEditDialogShow(true), [setIsEditDialogShow])
-    const closeEditDialog = useCallback(() => setIsEditDialogShow(false), [setIsEditDialogShow]) 
-//   const { storage } = useStorage()
-//   const handleRemove: MouseEventHandler<HTMLDivElement> = useCallback(() => {
-//     remove(storage, props.bookmark.id).then(props.refresh)
-//   }, [props])
+    const {open, onClose, openDialog} = props
+  const { storage } = useStorage()
+  const { bookmarks, setBookmarks } = useBookmarks()
+  const handleRefresh = useCallback(() => get(storage).then(setBookmarks), [setBookmarks])
+  const handleRemove: MouseEventHandler<HTMLDivElement> = useCallback(() => {
+    remove(storage, props.bookmark.id).then(handleRefresh)
+  }, [props])
     return (
         <>
             <Dialog open={open} onClose={onClose}>
                 <slot>
-                    <div onClick={showEditDialog}>編集</div >
-                    {/* <div onClick={handleRemove}>削除</div> */}
+                    <div onClick={openDialog}>編集</div >
+                    <div onClick={handleRemove}>削除</div>
                 </slot>
             </Dialog>
-            <EditDialog open={isShowEditDialog} onClose={closeEditDialog} name={props.name} url={props.url}/>
         </>
     )
 }

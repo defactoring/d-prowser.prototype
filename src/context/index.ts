@@ -18,8 +18,6 @@ export const authContext = createContext<AuthContext>({} as AuthContext)
 
 type AppContext = {
   user: firebase.User
-  mode: 'normal' | 'edit'
-  setMode: (mode: 'normal' | 'edit') => void
   storage: BookmarkStorage
 }
 

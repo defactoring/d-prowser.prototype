@@ -1,7 +1,6 @@
 import React, { useContext, useLayoutEffect, useRef, useState } from 'react'
 import { appContext, authContext, bookmarksContext } from '../../context'
 import { NormalContents } from '../NormalContents'
-import { EditContents } from '../EditContents'
 import { FirestoreStorage } from '../../feature/storage'
 import { Bookmark, get } from '../../feature/bookmark'
 import SignInScreen from '../SignInScreen'
@@ -14,17 +13,16 @@ type Props = {
  * 認証機能を提供する
  */
 const Authenticated: React.FC<Props> = ({ user }) => {
-  const [mode, setMode] = useState<'normal' | 'edit'>('normal')
   const storage = new FirestoreStorage(user)
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
-  const value = useRef({ mode, setMode, storage, user }).current
+  const value = useRef({ storage, user }).current
   useLayoutEffect(() => {
     get(storage).then(setBookmarks)
   }, [setBookmarks])
   return (
     <appContext.Provider value={value}>
       <bookmarksContext.Provider value={{ bookmarks, setBookmarks }}>
-        {mode === 'normal' ? <NormalContents /> : <EditContents />}
+        <NormalContents />
       </bookmarksContext.Provider>
     </appContext.Provider>
   )
