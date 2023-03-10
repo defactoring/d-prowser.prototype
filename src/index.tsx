@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
+  // 脆弱性を発見したら、warningを出すモード
   <React.StrictMode>
     <App />
   </React.StrictMode>,

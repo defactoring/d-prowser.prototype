@@ -11,6 +11,9 @@ export class FirestoreStorage implements BookmarkStorage {
 
   constructor(private readonly user: firebase.User) {}
 
+  /**
+   * DBのブックマークを全て読み込む
+   */
   async read(): Promise<Bookmark[]> {
     const bookmarks = await getDocs(collection(this.db, 'users', this.user.uid, 'bookmarks')).then(
       (snapshot) => snapshot.docs.map((doc) => doc.data()),
@@ -18,6 +21,19 @@ export class FirestoreStorage implements BookmarkStorage {
     return bookmarks as Bookmark[]
   }
 
+  /**
+   * 指定されたIDのDBのブックマークを読み込む
+   */
+  async readOne(id: string): Promise<Bookmark[]> {
+    const bookmarks = await getDocs(collection(this.db, 'users', this.user.uid, 'bookmarks')).then(
+      (snapshot) => snapshot.docs.map((doc) => doc.data()),
+    )
+    return bookmarks as Bookmark[]
+  }
+
+  /**
+   * DBにブックマークを登録
+   */
   async create(bookmark: Bookmark): Promise<void> {
     await setDoc(doc(this.db, 'users', this.user.uid, 'bookmarks', bookmark.id), bookmark)
   }

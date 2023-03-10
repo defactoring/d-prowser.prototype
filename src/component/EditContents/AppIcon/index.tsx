@@ -27,10 +27,10 @@ export const AppIcon: React.FC<Props> = (props) => {
   }, [props])
   return (
     <S.Container>
-      <S.IconImage src={props.bookmark.icon} />
       {/* アイコンを表示 */}
-      <S.Overlay role='button' aria-pressed={false} onClick={handleRemove} />
+      <S.IconImage src={props.bookmark.icon} />
       {/* 編集モードの時表示されるバツボタン */}
+      <S.Overlay role='button' aria-pressed={false} onClick={handleRemove} />
       <S.Name
         defaultValue={props.bookmark.name}
         variant='standard'

@@ -40,6 +40,7 @@ const Content: React.FC = () => {
 }
 
 /**
+ * Appコンポーネント
  * React大元
  */
 export const App = () => {

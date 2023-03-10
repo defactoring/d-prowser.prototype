@@ -11,7 +11,7 @@ const favicon = (url: string) => {
 
 /**
  * ブックマークオブジェクトを作成
- * タイトル・URL・アイコンを渡し、ブックマークを返す。
+ * タイトル・URL・アイコンを渡し、ブックマークオブジェクトを返す。
  */
 export const create = (name: string, url: string, icon?: string): Bookmark => {
   return {

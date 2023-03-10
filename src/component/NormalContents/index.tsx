@@ -7,13 +7,13 @@ import React, { useCallback, useState } from 'react'
  */
 export const NormalContents: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false)
-  const handleOpen = useCallback(() => setOpen(true), [setOpen])
-  const handleClose = useCallback(() => setOpen(false), [setOpen])
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
   return (
     <>
       <Contents open={handleOpen} />
-      <AddDialog open={open} onClose={handleClose} />
       {/* アプリ追加ダイアログ */}
+      <AddDialog open={open} onClose={handleClose} />
     </>
   )
 }

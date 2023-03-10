@@ -9,18 +9,20 @@ import { useBookmarkForm } from './useBookmarkForm'
 type Props = {
   open: boolean
   onClose: () => void
+  name: string
+  url: string
 }
 
 /**
  * アプリ追加ダイアログ
  * テキストフィールドからタイトルとアプリのURLを取得しアプリアイコンを表示させる。
  */
-export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
+export const EditDialog: React.FC<Props> = ({ open, onClose, name, url }) => {
   const { register, onSubmit, errors } = useBookmarkForm({ onSuccess: onClose })
   return (
     <Dialog open={open} onClose={onClose}>
       <S.Form onSubmit={onSubmit}>
-        <S.Title>Add Icon</S.Title>
+        <S.Title>Edit Icon</S.Title>
         <TextField
           {...register('name')}
           label='name'
@@ -28,6 +30,7 @@ export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
           variant='standard'
           fullWidth
           error={errors.name !== undefined}
+          defaultValue={name}
         />
         <TextField
           {...register('url')}
@@ -36,9 +39,10 @@ export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
           variant='standard'
           fullWidth
           error={errors.url !== undefined}
+          defaultValue={url}
         />
         <Button variant='contained' type='submit' fullWidth>
-          Add
+          Edit
         </Button>
       </S.Form>
     </Dialog>
