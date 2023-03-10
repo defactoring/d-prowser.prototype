@@ -4,9 +4,10 @@ import { AppIcon } from '../AppIcon'
 import { AddIcon } from '../AddIcon'
 import { EditIcon } from '../EditIcon'
 import { useBookmarks } from '../../../hooks'
+import { Bookmark } from '../../../feature/bookmark'
 
 type Props = {
-  open: () => void
+  open: (bookmark?: Bookmark) => void
 }
 
 /**
@@ -18,22 +19,22 @@ export const Contents: React.FC<Props> = ({ open }) => {
   return (
     <S.Container>
       <S.AppContents>
-        {bookmarks.map((appIconItem) => {
+        {bookmarks.map((bookmark) => {
           return (
             // アプリアイコン
             <AppIcon
-              open={open}
-              key={appIconItem.id}
-              name={appIconItem.name}
-              icon={appIconItem.icon}
-              url={appIconItem.url}
+              open={() => open(bookmark)}
+              key={bookmark.id}
+              name={bookmark.name}
+              icon={bookmark.icon}
+              url={bookmark.url}
             />
           )
         })}
       </S.AppContents>
       <S.EditContents>
         {/* 追加ボタン */}
-        <AddIcon open={open} />
+        <AddIcon open={() => open()} />
         {/* 編集ボタン */}
         <EditIcon />
       </S.EditContents>

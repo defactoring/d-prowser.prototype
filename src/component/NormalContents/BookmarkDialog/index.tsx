@@ -2,6 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { Dialog, TextField, Button } from '@mui/material'
 import { useBookmarkForm } from './useBookmarkForm'
+import { Bookmark } from '../../../feature/bookmark'
 
 /**
  * プロップス型の定義
@@ -9,18 +10,19 @@ import { useBookmarkForm } from './useBookmarkForm'
 type Props = {
   open: boolean
   onClose: () => void
+  bookmark?: Bookmark
 }
 
 /**
  * アプリ追加ダイアログ
  * テキストフィールドからタイトルとアプリのURLを取得しアプリアイコンを表示させる。
  */
-export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
-  const { register, onSubmit, errors } = useBookmarkForm({ onSuccess: onClose })
+export const BookmarkDialog: React.FC<Props> = ({ open, onClose, bookmark }) => {
+  const { register, onSubmit, errors } = useBookmarkForm({ bookmark, onSuccess: onClose })
   return (
     <Dialog open={open} onClose={onClose}>
       <S.Form onSubmit={onSubmit}>
-        <S.Title>Add Icon</S.Title>
+        <S.Title>Save Bookmark</S.Title>
         <TextField
           {...register('name')}
           label='name'
@@ -38,7 +40,7 @@ export const AddDialog: React.FC<Props> = ({ open, onClose }) => {
           error={errors.url !== undefined}
         />
         <Button variant='contained' type='submit' fullWidth>
-          Add
+          Save
         </Button>
       </S.Form>
     </Dialog>

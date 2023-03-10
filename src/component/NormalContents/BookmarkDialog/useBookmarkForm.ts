@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
-import { add, Bookmark, create, get } from '../../../feature/bookmark'
+import { add, Bookmark, create, get, modify } from '../../../feature/bookmark'
 import { useBookmarks, useStorage } from '../../../hooks'
-import { FormEventHandler, useCallback } from 'react'
+import { FormEventHandler, useCallback, useEffect, useMemo } from 'react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -19,6 +19,7 @@ const schema = z.object({
  * Props型定義
  */
 type Props = {
+  bookmark?: Bookmark
   onSuccess: () => void
 }
 /**
@@ -26,27 +27,36 @@ type Props = {
  * @param param0
  * @returns
  */
-export const useBookmarkForm = ({ onSuccess }: Props) => {
+export const useBookmarkForm = ({ bookmark: _bookmark, onSuccess }: Props) => {
+  const defaultValues = useMemo<Pick<Bookmark, 'name' | 'url' | 'tags'> & Partial<Bookmark>>(
+    () => _bookmark ?? { name: '', url: '', tags: [] },
+    [_bookmark],
+  )
   const {
     register,
     reset,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({
-    defaultValues: { name: '', url: '' },
+    defaultValues,
     resolver: zodResolver(schema),
   })
   const { setBookmarks } = useBookmarks()
   const { storage } = useStorage()
   const onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
     handleSubmit(async (bookmark) => {
-      await add(storage, create(bookmark.name, bookmark.url))
+      if (defaultValues.id === undefined) {
+        await add(storage, create(bookmark))
+      } else {
+        await modify(storage, defaultValues.id, bookmark)
+      }
       await get(storage)
         .then(setBookmarks)
         .then(() => reset())
         .then(onSuccess)
     }),
-    [handleSubmit, storage, reset, onSuccess],
+    [defaultValues, handleSubmit, storage, reset, onSuccess],
   )
-  return { register, onSubmit, errors }
+  useEffect(() => reset(defaultValues), [reset, defaultValues])
+  return { register, onSubmit, errors, reset }
 }
