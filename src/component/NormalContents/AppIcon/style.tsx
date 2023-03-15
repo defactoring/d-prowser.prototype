@@ -56,5 +56,4 @@ export const Name = styled.p`
   font-size: 12px;
 `
 
-export const DropDialog = styled.div`
-`
+export const DropDialog = styled.div``

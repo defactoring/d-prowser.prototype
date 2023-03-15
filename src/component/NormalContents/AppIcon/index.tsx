@@ -1,9 +1,13 @@
 import React from 'react'
 import * as S from './style'
 import { MoreHoriz } from '@mui/icons-material'
-import { useState } from 'react';
-import { MoreHorizDialog } from '../MoreHorizDialog';
-import { Bookmark } from '../../../feature/bookmark/type';
+import { useStorage } from '../../../hooks'
+import { useBookmarks } from '../../../hooks'
+import { Bookmark } from '../../../feature/bookmark/type'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import { useCallback, MouseEventHandler } from 'react'
+import { remove, get } from '../../../feature/bookmark/'
 
 type Props = {
   open: () => void
@@ -12,24 +16,38 @@ type Props = {
 /**
  * アプリアイコン
  */
-export const AppIcon: React.FC<Props> = ({
-  open,
-  bookmark
-}) => {
-  const [isDialogShow, setHasDialog] = useState<boolean>(false)
-  const handleOpenDialog = () => setHasDialog(true)
-  const handleCloseDialog = () => setHasDialog(false)
+export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const openMenu = Boolean(anchorEl)
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+  const { storage } = useStorage()
+  const { bookmarks, setBookmarks } = useBookmarks()
+  const handleRefresh = useCallback(() => get(storage).then(setBookmarks), [setBookmarks])
+  const handleRemove: MouseEventHandler<HTMLLIElement> = useCallback(() => {
+    remove(storage, bookmark.id).then(handleRefresh)
+  }, [])
   return (
     <S.Container>
-      <S.Menu onClick={handleOpenDialog}>
+      <S.Menu onClick={handleClick}>
         <MoreHoriz fontSize='large' />
       </S.Menu>
-      <MoreHorizDialog 
-      open={isDialogShow} 
-      onClose={handleCloseDialog} 
-      openDialog={open}
-      bookmark={bookmark}
-      />
+      <Menu
+        id='basic-menu'
+        anchorEl={anchorEl}
+        open={openMenu}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={open}>Edit</MenuItem>
+        <MenuItem onClick={handleRemove}>Delete</MenuItem>
+      </Menu>
       <S.Link href={bookmark.url} target='_blank'>
         <S.IconImage src={bookmark.icon} />
         <S.Name>{bookmark.name}</S.Name>

@@ -21,11 +21,7 @@ export const Contents: React.FC<Props> = ({ open }) => {
         {bookmarks.map((bookmark) => {
           return (
             // アプリアイコン
-            <AppIcon
-              key={bookmark.id}
-              open={() => open(bookmark)}
-              bookmark={bookmark}
-            />
+            <AppIcon key={bookmark.id} open={() => open(bookmark)} bookmark={bookmark} />
           )
         })}
       </S.AppContents>
