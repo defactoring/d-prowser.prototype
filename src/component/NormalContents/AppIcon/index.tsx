@@ -41,6 +41,7 @@ export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
         anchorEl={anchorEl}
         open={openMenu}
         onClose={handleClose}
+        onClick={handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
