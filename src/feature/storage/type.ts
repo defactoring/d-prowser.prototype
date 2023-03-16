@@ -13,7 +13,7 @@ export interface BookmarkStorage {
    *
    * @returns Bookmark[]
    */
-  readOne(id: string): Promise<Bookmark[]>
+  readOne(id: string): Promise<Bookmark>
 
   /**
    * ブックマークをDBに登録

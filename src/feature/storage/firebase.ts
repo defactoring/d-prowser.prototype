@@ -1,4 +1,12 @@
-import { getFirestore, collection, getDocs, deleteDoc, updateDoc, query } from 'firebase/firestore'
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  query,
+} from 'firebase/firestore'
 import { Bookmark } from '../bookmark'
 import { doc, setDoc } from 'firebase/firestore'
 import { BookmarkStorage } from './type'
@@ -25,11 +33,10 @@ export class FirestoreStorage implements BookmarkStorage {
   /**
    * 指定されたIDのDBのブックマークを読み込む
    */
-  async readOne(id: string): Promise<Bookmark[]> {
-    const bookmarks = await getDocs(collection(this.db, 'users', this.user.uid, 'bookmarks')).then(
-      (snapshot) => snapshot.docs.map((doc) => doc.data()),
-    )
-    return bookmarks as Bookmark[]
+  async readOne(id: string): Promise<Bookmark> {
+    const docRef = doc(this.db, 'users', this.user.uid, 'bookmarks', id)
+    const bookmark = await getDoc(docRef)
+    return bookmark.data() as Bookmark
   }
 
   /**
