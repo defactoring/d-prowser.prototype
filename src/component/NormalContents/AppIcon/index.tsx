@@ -3,11 +3,10 @@ import * as S from './style'
 import { MoreHoriz } from '@mui/icons-material'
 import { useStorage } from '../../../hooks'
 import { useBookmarks } from '../../../hooks'
-import { Bookmark } from '../../../feature/bookmark/type'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useCallback, MouseEventHandler } from 'react'
-import { remove, get } from '../../../feature/bookmark/'
+import { remove, get, Bookmark } from '../../../feature/bookmark/'
 
 type Props = {
   open: () => void
@@ -26,7 +25,7 @@ export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
     setAnchorEl(null)
   }
   const { storage } = useStorage()
-  const { bookmarks, setBookmarks } = useBookmarks()
+  const { setBookmarks } = useBookmarks()
   const handleRefresh = useCallback(() => get(storage).then(setBookmarks), [setBookmarks])
   const handleRemove: MouseEventHandler<HTMLLIElement> = useCallback(() => {
     remove(storage, bookmark.id).then(handleRefresh)
