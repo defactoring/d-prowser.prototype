@@ -17,12 +17,12 @@ export const AppContents = styled.div`
 
   @media screen and (min-width: 600px) {
     max-width: 800px;
-    margin: 40px auto 0;
+    margin: 40px auto 120px;
     gap: 8px;
   }
   @media screen and (min-width: 1280px) {
     max-width: 1280px;
-    margin: 40px auto 0;
+    margin: 40px auto 120px;
     gap: 48px;
   }
 `

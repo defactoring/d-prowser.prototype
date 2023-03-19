@@ -2,7 +2,6 @@ import React from 'react'
 import * as S from './style'
 import { AppIcon } from '../AppIcon'
 import { AddIcon } from '../AddIcon'
-import { EditIcon } from '../EditIcon'
 import { useBookmarks } from '../../../hooks'
 import { Bookmark } from '../../../feature/bookmark'
 
@@ -22,21 +21,13 @@ export const Contents: React.FC<Props> = ({ open }) => {
         {bookmarks.map((bookmark) => {
           return (
             // アプリアイコン
-            <AppIcon
-              open={() => open(bookmark)}
-              key={bookmark.id}
-              name={bookmark.name}
-              icon={bookmark.icon}
-              url={bookmark.url}
-            />
+            <AppIcon key={bookmark.id} open={() => open(bookmark)} bookmark={bookmark} />
           )
         })}
       </S.AppContents>
       <S.EditContents>
         {/* 追加ボタン */}
         <AddIcon open={() => open()} />
-        {/* 編集ボタン */}
-        <EditIcon />
       </S.EditContents>
     </S.Container>
   )

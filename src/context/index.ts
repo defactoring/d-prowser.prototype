@@ -4,7 +4,7 @@ import { Bookmark } from '../feature/bookmark'
 import firebase from 'firebase/compat'
 
 /**
- * ユーザーを保持するコンテクスト
+ * ユーザーを保持するコンテクストのType定義
  */
 type AuthContext = {
   user: firebase.User | null
@@ -15,10 +15,9 @@ type AuthContext = {
  * ユーザーとモードを保持するコンテクスト
  */
 export const authContext = createContext<AuthContext>({} as AuthContext)
+
 type AppContext = {
   user: firebase.User
-  mode: 'normal' | 'edit'
-  setMode: (mode: 'normal' | 'edit') => void
   storage: BookmarkStorage
 }
 

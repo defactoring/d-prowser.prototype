@@ -23,8 +23,8 @@ export const NormalContents: React.FC = () => {
   return (
     <>
       <Contents open={handleOpen} />
-      <BookmarkDialog open={open} onClose={handleClose} bookmark={bookmark} />
       {/* アプリ追加ダイアログ */}
+      <BookmarkDialog open={open} onClose={handleClose} bookmark={bookmark} />
     </>
   )
 }
