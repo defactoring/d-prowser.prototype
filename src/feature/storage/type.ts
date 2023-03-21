@@ -9,13 +9,6 @@ export interface BookmarkStorage {
   read(): Promise<Bookmark[]>
 
   /**
-   * DBからブックマーク配列を取得
-   *
-   * @returns Bookmark[]
-   */
-  readOne(id: string): Promise<Bookmark>
-
-  /**
    * ブックマークをDBに登録
    */
   create(bookmark: Bookmark): Promise<void>
