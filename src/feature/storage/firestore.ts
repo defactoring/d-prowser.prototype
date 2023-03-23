@@ -11,6 +11,12 @@ export class FirestoreStorage implements BookmarkStorage {
 
   constructor(private readonly user: firebase.User) {}
 
+  get tags(): string[] {
+    return [
+      ...new Set((this._bookmarks ?? []).flatMap(({ tags }) => tags).filter((tag) => !!tag)),
+    ].sort()
+  }
+
   /**
    * DBのブックマークを再読み込みする
    */
