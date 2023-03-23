@@ -10,7 +10,6 @@ export const Container = styled.div`
 
 export const Search = styled.div`
   position: relative;
-  border-radius: 160px;
   width: 100%;
   max-width: 640px;
   margin: 16px auto;
@@ -29,6 +28,7 @@ export const SearchIconWrapper = styled.div`
 export const SearchField = styled(Autocomplete)`
   & .MuiInputBase-root {
     padding-left: 42px;
+    border-radius: 160px;
   }
 `
 
