@@ -7,6 +7,11 @@ export interface BookmarkStorage {
   tags: string[]
 
   /**
+   * DBからブックマークを検索
+   */
+  search(q: string): Promise<Bookmark[]>
+
+  /**
    * DBからブックマーク配列を取得
    *
    * @returns Bookmark[]

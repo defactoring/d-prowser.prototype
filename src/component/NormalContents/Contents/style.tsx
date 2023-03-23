@@ -1,10 +1,35 @@
 import styled from '@emotion/styled'
+import { Autocomplete } from '@mui/material'
 
 export const Container = styled.div`
   box-sizing: border-box;
   padding: 16px;
   width: 100vw;
   min-height: 100vh;
+`
+
+export const Search = styled.div`
+  position: relative;
+  border-radius: 160px;
+  width: 100%;
+  max-width: 640px;
+  margin: 16px auto;
+`
+
+export const SearchIconWrapper = styled.div`
+  padding: 0 12px;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const SearchField = styled(Autocomplete)`
+  & .MuiInputBase-root {
+    padding-left: 42px;
+  }
 `
 
 export const AppContents = styled.div`
