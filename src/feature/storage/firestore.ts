@@ -34,8 +34,9 @@ export class FirestoreStorage implements BookmarkStorage {
    * DBからブックマークを検索する
    */
   async search(q: string): Promise<Bookmark[]> {
-    if (q === '') return this._bookmarks ?? []
-    return (this._bookmarks ?? []).filter(({ tags }) => (tags ?? []).includes(q))
+    const bookmarks = await this.read()
+    if (q === '') return bookmarks
+    return bookmarks.filter(({ tags }) => (tags ?? []).includes(q))
   }
 
   /**
