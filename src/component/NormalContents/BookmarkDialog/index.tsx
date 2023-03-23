@@ -59,7 +59,14 @@ export const BookmarkDialog: React.FC<Props> = ({ open, onClose, bookmark }) => 
               onBlur={onBlur}
               onChange={(_, newValue) => onChange(newValue)}
               renderInput={(params) => (
-                <TextField {...params} name={name} ref={ref} variant='standard' type='text' />
+                <TextField
+                  {...params}
+                  name={name}
+                  ref={ref}
+                  variant='standard'
+                  type='text'
+                  label='tags'
+                />
               )}
               filterOptions={(options, params) => {
                 const filtered = createFilterOptions<string>()(options, params)
