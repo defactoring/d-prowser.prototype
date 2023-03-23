@@ -2,6 +2,11 @@ import { Bookmark } from '../bookmark'
 
 export interface BookmarkStorage {
   /**
+   * タグ一覧
+   */
+  tags: string[]
+
+  /**
    * DBからブックマーク配列を取得
    *
    * @returns Bookmark[]
