@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import * as S from './style'
 import { MoreHoriz } from '@mui/icons-material'
 import { useStorage } from '../../../hooks'
@@ -16,10 +16,15 @@ type Props = {
  * アプリアイコン
  */
 export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
+  const containerRef = createRef<HTMLDivElement>()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const openMenu = Boolean(anchorEl)
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
+  const handleClick = () => {
+    setAnchorEl(containerRef.current)
+  }
+  const handleContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setAnchorEl(containerRef.current)
   }
   const handleClose = () => {
     setAnchorEl(null)
@@ -31,7 +36,7 @@ export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
     remove(storage, bookmark.id).then(handleRefresh)
   }, [])
   return (
-    <S.Container>
+    <S.Container onContextMenu={handleContextMenu} ref={containerRef}>
       <S.Menu onClick={handleClick}>
         <MoreHoriz fontSize='large' />
       </S.Menu>
@@ -41,9 +46,9 @@ export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
         open={openMenu}
         onClose={handleClose}
         onClick={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
+        MenuListProps={{ 'aria-labelledby': 'basic-button' }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         <MenuItem onClick={open}>Edit</MenuItem>
         <MenuItem onClick={handleRemove}>Delete</MenuItem>

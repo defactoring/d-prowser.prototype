@@ -55,5 +55,3 @@ export const Name = styled.p`
   overflow: hidden;
   font-size: 12px;
 `
-
-export const DropDialog = styled.div``
