@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { add, Bookmark, create, get, modify } from '../../../feature/bookmark'
+import { add, Bookmark, create, modify } from '../../../feature/bookmark'
 import { useBookmarks, useStorage } from '../../../hooks'
 import { FormEventHandler, useCallback, useEffect, useMemo } from 'react'
 import { z } from 'zod'
@@ -44,7 +44,7 @@ export const useBookmarkForm = ({ bookmark: _bookmark, onSuccess }: Props) => {
     defaultValues,
     resolver: zodResolver(schema),
   })
-  const { setBookmarks } = useBookmarks()
+  const { filter } = useBookmarks()
   const { storage } = useStorage()
   const onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
     handleSubmit(async (bookmark) => {
@@ -53,8 +53,7 @@ export const useBookmarkForm = ({ bookmark: _bookmark, onSuccess }: Props) => {
       } else {
         await modify(storage, defaultValues.id, bookmark)
       }
-      await get(storage)
-        .then(setBookmarks)
+      await filter()
         .then(() => reset())
         .then(onSuccess)
     }),

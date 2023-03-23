@@ -16,6 +16,7 @@ type Props = {
  * 画面にアイコンオブジェクトを表示させる。
  */
 export const Contents: React.FC<Props> = ({ open }) => {
+  const queries = new URLSearchParams(window.location.search)
   const { bookmarks, tags, onSearch } = useBookmarks()
   return (
     <S.Container>
@@ -24,8 +25,10 @@ export const Contents: React.FC<Props> = ({ open }) => {
           <Search />
         </S.SearchIconWrapper>
         <S.SearchField
+          freeSolo
           fullWidth
           options={tags}
+          defaultValue={queries.get('q')}
           onInputChange={(_, value) => onSearch(value)}
           renderInput={(params) => <TextField {...params} type='search' placeholder='Search…' />}
         />

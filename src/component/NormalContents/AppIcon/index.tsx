@@ -6,7 +6,7 @@ import { useBookmarks } from '../../../hooks'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useCallback, MouseEventHandler } from 'react'
-import { remove, get, Bookmark } from '../../../feature/bookmark/'
+import { remove, Bookmark } from '../../../feature/bookmark/'
 
 type Props = {
   open: () => void
@@ -30,10 +30,9 @@ export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
     setAnchorEl(null)
   }
   const { storage } = useStorage()
-  const { setBookmarks } = useBookmarks()
-  const handleRefresh = useCallback(() => get(storage).then(setBookmarks), [setBookmarks])
+  const { filter } = useBookmarks()
   const handleRemove: MouseEventHandler<HTMLLIElement> = useCallback(() => {
-    remove(storage, bookmark.id).then(handleRefresh)
+    remove(storage, bookmark.id).then(() => filter())
   }, [])
   return (
     <S.Container onContextMenu={handleContextMenu} ref={containerRef}>
