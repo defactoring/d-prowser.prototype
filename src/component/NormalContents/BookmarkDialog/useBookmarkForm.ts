@@ -5,7 +5,7 @@ import { FormEventHandler, useCallback, useEffect, useMemo } from 'react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-type Inputs = Pick<Bookmark, 'name' | 'url'>
+type Inputs = Pick<Bookmark, 'name' | 'url' | 'tags'>
 
 /**
  * 入力されたブックマークの名前とURLの

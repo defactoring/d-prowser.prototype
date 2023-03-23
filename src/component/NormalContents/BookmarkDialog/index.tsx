@@ -39,6 +39,14 @@ export const BookmarkDialog: React.FC<Props> = ({ open, onClose, bookmark }) => 
           fullWidth
           error={errors.url !== undefined}
         />
+        <TextField
+          {...register('tags')}
+          label='tags'
+          type='text'
+          variant='standard'
+          fullWidth
+          error={errors.tags !== undefined}
+        />
         <Button variant='contained' type='submit' fullWidth>
           Save
         </Button>
