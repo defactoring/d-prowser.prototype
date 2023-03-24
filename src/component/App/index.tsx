@@ -18,7 +18,7 @@ const Authenticated: React.FC<Props> = ({ user, defaultValue }) => {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
   const value = useRef({ storage, user }).current
   useLayoutEffect(() => {
-    get(storage, { q: new URLSearchParams(window.location.search).get('q') }).then(setBookmarks)
+    get(storage, { q: defaultValue }).then(setBookmarks)
   }, [setBookmarks])
   return (
     <appContext.Provider value={value}>

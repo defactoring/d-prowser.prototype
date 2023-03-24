@@ -8,8 +8,7 @@ export const useBookmarks = () => {
   const { bookmarks, setBookmarks } = useContext(bookmarksContext)
   const filter = useCallback(
     (params?: { q: string }) => {
-      const queries = new URLSearchParams(params ?? window.location.search)
-      window.history.pushState({}, document.title, `${window.location.pathname}?${queries}`)
+      const queries = new URLSearchParams(params ?? {})
       return get(storage, { q: queries.get('q') }).then(setBookmarks)
     },
     [storage, setBookmarks],
