@@ -57,16 +57,19 @@ export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
   const { storage } = useStorage()
   // ブックマークコンテキストを取得
   const { setBookmarks } = useBookmarks()
-  //
+  // ブックマーク配列をDBから取得する
   const handleRefresh = useCallback(() => get(storage).then(setBookmarks), [setBookmarks])
-  //
+  // ブックマーク削除関数
   const handleRemove: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
     remove(storage, bookmark.id).then(handleRefresh)
   }, [])
+  // 確認ダイアログ変数
   const [openConfirm, setOpenConfirm] = React.useState(false)
-  const handleOpenConfirm = () => {
+  // 確認ダイアログ表示関数
+  const handleShowConfirm = () => {
     setOpenConfirm(true)
   }
+  // 確認ダイアログ非表示関数
   const handleCloseConfirm = () => {
     setOpenConfirm(false)
   }
@@ -87,7 +90,7 @@ export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         <MenuItem onClick={open}>Edit</MenuItem>
-        <MenuItem onClick={handleOpenConfirm}>Delete</MenuItem>
+        <MenuItem onClick={handleShowConfirm}>Delete</MenuItem>
       </Menu>
       <Dialog
         open={openConfirm}
