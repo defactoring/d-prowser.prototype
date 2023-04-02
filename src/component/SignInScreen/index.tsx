@@ -20,7 +20,6 @@ const uiConfig = {
 /**
  * サインインスクリーンタグ
  * ログイン画面を表示
- * @returns
  */
 const SignInScreen: React.FC = () => {
   const { setUser } = useContext(authContext)

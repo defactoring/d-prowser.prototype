@@ -21,10 +21,11 @@ type AppContext = {
   storage: BookmarkStorage
 }
 
+export const appContext = createContext<AppContext>({} as AppContext)
+
 /**
  * ブックマーク配列を保持するコンテクスト
  */
-export const appContext = createContext<AppContext>({} as AppContext)
 type BookmarksContext = {
   bookmarks: Bookmark[]
   setBookmarks: Dispatch<SetStateAction<Bookmark[]>>
