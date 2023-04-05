@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import * as S from './style'
 import { Button, FormHelperText, TextField } from '@mui/material'
@@ -6,7 +6,7 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { firebaseApp } from '../../../feature/firebase'
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router'
 
 type Inputs = {
   email: string
