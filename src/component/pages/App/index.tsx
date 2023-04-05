@@ -1,9 +1,9 @@
 import React, { useContext, useLayoutEffect, useRef, useState } from 'react'
-import { appContext, authContext, bookmarksContext } from '../../context'
-import { NormalContents } from '../NormalContents'
-import { FirestoreStorage } from '../../feature/storage'
-import { Bookmark, get } from '../../feature/bookmark'
-import SignInScreen from '../SignInScreen'
+import { appContext, authContext, bookmarksContext } from '../../../context'
+import { NormalContents } from '../../NormalContents'
+import { FirestoreStorage } from '../../../feature/storage'
+import { Bookmark, get } from '../../../feature/bookmark'
+import SignInScreen from '../../SignInScreen'
 import firebase from 'firebase/compat'
 
 type Props = {

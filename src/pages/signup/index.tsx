@@ -1,9 +1,9 @@
 import React from 'react'
+import { SignUp } from '../../component/pages'
 import { NextPage } from 'next'
-import { App } from '../component/pages'
 
 const Page: NextPage = () => {
-  return <App />
+  return <SignUp />
 }
 
 export default Page

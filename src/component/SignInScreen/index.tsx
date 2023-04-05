@@ -3,6 +3,7 @@ import 'firebase/compat/auth'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { firebaseApp } from '../../feature/firebase'
 import { authContext } from '../../context'
+import * as A from '../atoms'
 import * as S from './style'
 import { Button, FormHelperText, TextField } from '@mui/material'
 import { z } from 'zod'
@@ -57,7 +58,7 @@ const SignInScreen: React.FC = () => {
   )
 
   return (
-    <div>
+    <S.Container>
       <h1>D-Prowser</h1>
       <S.Form onSubmit={onSubmit}>
         <TextField
@@ -81,7 +82,8 @@ const SignInScreen: React.FC = () => {
         </Button>
       </S.Form>
       <FormHelperText error>{error}</FormHelperText>
-    </div>
+      <A.Link href='/signup'>Sign Up</A.Link>
+    </S.Container>
   )
 }
 
