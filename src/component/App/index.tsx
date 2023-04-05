@@ -12,7 +12,7 @@ type Props = {
 /**
  * 認証機能を提供する
  */
-const Authenticated: React.FC<Props> = ({ user}) => {
+const Authenticated: React.FC<Props> = ({ user }) => {
   const storage = new FirestoreStorage(user)
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
   const value = useRef({ storage, user }).current
@@ -34,11 +34,7 @@ const Authenticated: React.FC<Props> = ({ user}) => {
  */
 const Content: React.FC = () => {
   const { user } = useContext(authContext)
-  return (
-    <>
-      {user === null ? <SignInScreen /> : <Authenticated user={user} />}
-    </>
-  )
+  return <>{user === null ? <SignInScreen /> : <Authenticated user={user} />}</>
 }
 
 /**
