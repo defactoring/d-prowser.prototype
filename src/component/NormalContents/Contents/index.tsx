@@ -8,7 +8,6 @@ import { useBookmarks } from './useBookmarks'
 import { TextField } from '@mui/material'
 
 type Props = {
-  defaultValue?: string | null
   open: (bookmark?: Bookmark) => void
 }
 
@@ -16,7 +15,7 @@ type Props = {
  * コンテンツ
  * 画面にアイコンオブジェクトを表示させる。
  */
-export const Contents: React.FC<Props> = ({ open, defaultValue }) => {
+export const Contents: React.FC<Props> = ({ open }) => {
   const { bookmarks, tags, onSearch } = useBookmarks()
   return (
     <S.Container>
@@ -28,7 +27,6 @@ export const Contents: React.FC<Props> = ({ open, defaultValue }) => {
           freeSolo
           fullWidth
           options={tags}
-          defaultValue={defaultValue}
           onInputChange={(_, value) => onSearch(value)}
           renderInput={(params) => <TextField {...params} type='search' placeholder='Search…' />}
         />

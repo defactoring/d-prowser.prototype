@@ -6,7 +6,7 @@ import { Bookmark } from '../../feature/bookmark'
 /**
  * 通常モード
  */
-export const NormalContents: React.FC<{ defaultValue?: string | null }> = ({ defaultValue }) => {
+export const NormalContents: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false)
   const [bookmark, setBookmark] = useState<Bookmark>()
   const handleOpen = useCallback(
@@ -22,7 +22,7 @@ export const NormalContents: React.FC<{ defaultValue?: string | null }> = ({ def
   }, [setBookmark, setOpen])
   return (
     <>
-      <Contents open={handleOpen} defaultValue={defaultValue} />
+      <Contents open={handleOpen} />
       {/* アプリ追加ダイアログ */}
       <BookmarkDialog open={open} onClose={handleClose} bookmark={bookmark} />
     </>

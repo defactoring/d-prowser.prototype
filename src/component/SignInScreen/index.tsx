@@ -1,4 +1,3 @@
-// Import FirebaseAuth and firebase.
 import React, { useContext, useEffect } from 'react'
 import { FirebaseAuth } from './FirebaseAuth'
 import 'firebase/compat/auth'

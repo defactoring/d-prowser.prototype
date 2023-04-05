@@ -8,22 +8,21 @@ import firebase from 'firebase/compat'
 
 type Props = {
   user: firebase.User
-  defaultValue?: string | null
 }
 /**
  * 認証機能を提供する
  */
-const Authenticated: React.FC<Props> = ({ user, defaultValue }) => {
+const Authenticated: React.FC<Props> = ({ user}) => {
   const storage = new FirestoreStorage(user)
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
   const value = useRef({ storage, user }).current
   useLayoutEffect(() => {
-    get(storage, { q: defaultValue }).then(setBookmarks)
+    get(storage).then(setBookmarks)
   }, [setBookmarks])
   return (
     <appContext.Provider value={value}>
       <bookmarksContext.Provider value={{ bookmarks, setBookmarks }}>
-        <NormalContents defaultValue={defaultValue} />
+        <NormalContents />
       </bookmarksContext.Provider>
     </appContext.Provider>
   )
@@ -33,11 +32,11 @@ const Authenticated: React.FC<Props> = ({ user, defaultValue }) => {
  * サインインされていない状態はログイン画面
  * サインインされている状態はコンテンツ画面
  */
-const Content: React.FC<{ defaultValue?: string | null }> = ({ defaultValue }) => {
+const Content: React.FC = () => {
   const { user } = useContext(authContext)
   return (
     <>
-      {user === null ? <SignInScreen /> : <Authenticated user={user} defaultValue={defaultValue} />}
+      {user === null ? <SignInScreen /> : <Authenticated user={user} />}
     </>
   )
 }
@@ -47,11 +46,10 @@ const Content: React.FC<{ defaultValue?: string | null }> = ({ defaultValue }) =
  * React大元
  */
 export const App = () => {
-  const queries = new URLSearchParams(window.location.search)
   const [user, setUser] = useState<firebase.User | null>(null)
   return (
     <authContext.Provider value={{ user, setUser }}>
-      <Content defaultValue={queries.get('q')} />
+      <Content />
     </authContext.Provider>
   )
 }

@@ -21,35 +21,35 @@ export const FirebaseAuth: React.FC<Props> = (props) => {
 
   useEffect(() => {
     // Get or Create a firebaseUI instance.
-    const firebaseUiWidget = auth.AuthUI.getInstance() || new auth.AuthUI(firebaseAuth)
+    // const firebaseUiWidget = auth.AuthUI.getInstance() || new auth.AuthUI(firebaseAuth)
 
     if (uiConfig.signInFlow === 'popup') {
-      firebaseUiWidget.reset()
+      // firebaseUiWidget.reset()
     }
 
     // We track the auth state to reset firebaseUi if the user signs out.
     const unregisterAuthObserver = onAuthStateChanged(firebaseAuth, (user) => {
       if (!user && userSignedIn) {
-        firebaseUiWidget.reset()
+        // firebaseUiWidget.reset()
       }
       setUserSignedIn(!!user)
     })
 
     // Render the firebaseUi Widget.
-    if (elementRef.current !== null) {
-      firebaseUiWidget.start(elementRef.current, uiConfig)
-    }
+    // if (elementRef.current !== null) {
+    //   firebaseUiWidget.start(elementRef.current, uiConfig)
+    // }
 
     return () => {
       unregisterAuthObserver()
-      firebaseUiWidget.reset()
+      // firebaseUiWidget.reset()
     }
-  }, [auth, uiConfig])
+  }, [uiConfig])
 
-  if (auth !== null) {
-    // Import the css only on the client.
-    require('firebaseui/dist/firebaseui.css')
-  }
+  // if (auth !== null) {
+  //   // Import the css only on the client.
+  //   require('firebaseui/dist/firebaseui.css')
+  // }
 
   return <div className={className} ref={elementRef} />
 }
