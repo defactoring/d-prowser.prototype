@@ -7,7 +7,7 @@ import SignInScreen from '../SignInScreen'
 import firebase from 'firebase/compat'
 
 type Props = {
-  user: firebase.User
+  user: firebase.UserInfo
 }
 /**
  * 認証機能を提供する
@@ -42,7 +42,7 @@ const Content: React.FC = () => {
  * React大元
  */
 export const App = () => {
-  const [user, setUser] = useState<firebase.User | null>(null)
+  const [user, setUser] = useState<firebase.UserInfo | null>(null)
   return (
     <authContext.Provider value={{ user, setUser }}>
       <Content />

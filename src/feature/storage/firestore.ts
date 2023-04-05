@@ -9,7 +9,7 @@ export class FirestoreStorage implements BookmarkStorage {
   private readonly db = getFirestore(firebaseApp)
   private _bookmarks: Bookmark[] | null = null
 
-  constructor(private readonly user: firebase.User) {}
+  constructor(private readonly user: firebase.UserInfo) {}
 
   get tags(): string[] {
     return [
