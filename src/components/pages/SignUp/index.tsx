@@ -5,7 +5,7 @@ import { Button, FormHelperText, TextField } from '@mui/material'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { firebaseApp } from '../../../feature/firebase'
+import { firebaseApp } from '@features/firebase'
 import { useRouter } from 'next/router'
 
 type Inputs = {

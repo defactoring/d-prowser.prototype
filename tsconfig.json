@@ -24,7 +24,18 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@atoms": ["src/components/atoms"],
+      "@pages": ["src/components/pages"],
+      "@molecules": ["src/components/molecules"],
+      "@organisms": ["src/components/organisms"],
+      "@templates": ["src/components/templates"],
+      "@hooks": ["src/hooks"],
+      "@contexts": ["src/contexts"],
+      "@features/*": ["src/features/*"],
+      "@themes": ["src/themes"]
+    }
   },
   "include": [
     "src",

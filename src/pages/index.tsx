@@ -1,6 +1,6 @@
 import React from 'react'
 import { NextPage } from 'next'
-import { App } from '../component/pages'
+import { App } from '../components/pages'
 
 const Page: NextPage = () => {
   return <App />

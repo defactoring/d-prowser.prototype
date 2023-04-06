@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { add, Bookmark, create, modify } from '../../../feature/bookmark'
+import { add, Bookmark, create, modify } from '@features/bookmark'
 import { useBookmarks, useStorage } from '../../../hooks'
 import { FormEventHandler, useCallback, useEffect, useMemo } from 'react'
 import { z } from 'zod'

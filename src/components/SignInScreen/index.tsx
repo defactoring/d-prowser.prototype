@@ -1,7 +1,7 @@
 import React, { FormEventHandler, useCallback, useContext, useEffect, useState } from 'react'
 import 'firebase/compat/auth'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { firebaseApp } from '../../feature/firebase'
+import { firebaseApp } from '@features/firebase'
 import { authContext } from '../../context'
 import * as A from '../atoms'
 import * as S from './style'

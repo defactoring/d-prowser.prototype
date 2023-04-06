@@ -2,6 +2,8 @@ import React from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import '../index.css'
+import { ThemeProvider } from '@mui/material'
+import { theme } from '@themes'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -16,7 +18,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel='manifest' href='/manifest.json' />
         <title>d-prowser</title>
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 }

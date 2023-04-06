@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { css } from '@emotion/react'
 
 export const Container = styled.div`
   position: relative;
@@ -9,9 +10,11 @@ export const Container = styled.div`
     background: lightgray;
   }
 
-  @media screen and (min-width: 600px) {
-    padding: 24px 16px 8px;
-  }
+  ${({ theme: { devices } }) => css`
+    @media screen and (min-width: ${devices.mobile}) {
+      padding: 24px 16px 8px;
+    }
+  `}
 `
 
 export const Menu = styled.button`
@@ -25,11 +28,13 @@ export const Menu = styled.button`
   appearance: none;
   color: #f7fafd;
 
-  @media screen and (min-width: 600px) {
-    display: inline-flex;
-    top: 4px;
-    right: 0;
-  }
+  ${({ theme: { devices } }) => css`
+    @media screen and (min-width: ${devices.mobile}) {
+      display: inline-flex;
+      top: 4px;
+      right: 0;
+    }
+  `}
 `
 
 export const Link = styled.a`

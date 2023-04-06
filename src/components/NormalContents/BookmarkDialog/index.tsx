@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { Dialog, TextField, Button, Autocomplete, createFilterOptions } from '@mui/material'
 import { useBookmarkForm } from './useBookmarkForm'
-import { Bookmark } from '../../../feature/bookmark'
+import { Bookmark } from '@features/bookmark'
 import { Controller } from 'react-hook-form'
 
 /**

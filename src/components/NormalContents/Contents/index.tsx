@@ -3,7 +3,7 @@ import * as S from './style'
 import { AppIcon } from '../AppIcon'
 import { AddIcon } from '../AddIcon'
 import { Search } from '@mui/icons-material'
-import { Bookmark } from '../../../feature/bookmark'
+import { Bookmark } from '@features/bookmark'
 import { useBookmarks } from './useBookmarks'
 import { TextField } from '@mui/material'
 

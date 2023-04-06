@@ -6,7 +6,7 @@ import { useBookmarks } from '../../../hooks'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useCallback, MouseEventHandler } from 'react'
-import { remove, Bookmark } from '../../../feature/bookmark/'
+import { remove, Bookmark } from '@features/bookmark/'
 
 type Props = {
   open: () => void

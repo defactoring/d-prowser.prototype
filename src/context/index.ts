@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction } from 'react'
-import { BookmarkStorage } from '../feature/storage'
-import { Bookmark } from '../feature/bookmark'
+import { BookmarkStorage } from '@features/storage'
+import { Bookmark } from '@features/bookmark'
 import firebase from 'firebase/compat'
 
 /**

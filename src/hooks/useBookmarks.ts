@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react'
 import { bookmarksContext } from '../context'
 import { useStorage } from './useStorage'
-import { get } from '../feature/bookmark'
+import { get } from '@features/bookmark'
 
 export const useBookmarks = () => {
   const { storage } = useStorage()

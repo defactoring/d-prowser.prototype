@@ -1,11 +1,10 @@
 import styled from '@emotion/styled'
 import { Autocomplete } from '@mui/material'
+import { css } from '@emotion/react'
 
 export const Container = styled.div`
   box-sizing: border-box;
   padding: 16px;
-  width: 100vw;
-  min-height: 100vh;
 `
 
 export const Search = styled.div`
@@ -40,20 +39,23 @@ export const AppContents = styled.div`
   gap: 0;
   margin-bottom: 120px;
 
-  @media screen and (min-width: 600px) {
-    max-width: 800px;
-    margin: 40px auto 120px;
-    gap: 8px;
-  }
-  @media screen and (min-width: 1280px) {
-    max-width: 1280px;
-    margin: 40px auto 120px;
-    gap: 48px;
-  }
+  ${({ theme: { devices } }) => css`
+    @media screen and (min-width: ${devices.mobile}) {
+      max-width: 800px;
+      margin: 40px auto 120px;
+      gap: 8px;
+    }
+
+    @media screen and (min-width: ${devices.desktop}) {
+      max-width: 1280px;
+      margin: 40px auto 120px;
+      gap: 48px;
+    }
+  `}
 `
 
 export const EditContents = styled.div`
-  position: fixed;
+  position: sticky;
   bottom: 40px;
   left: 0;
   right: 0;

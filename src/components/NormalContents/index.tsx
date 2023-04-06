@@ -1,7 +1,7 @@
 import { Contents } from './Contents'
 import { BookmarkDialog } from './BookmarkDialog'
 import React, { useCallback, useState } from 'react'
-import { Bookmark } from '../../feature/bookmark'
+import { Bookmark } from '@features/bookmark'
 
 /**
  * 通常モード
