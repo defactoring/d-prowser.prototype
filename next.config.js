@@ -4,6 +4,7 @@ const withPWA = require('next-pwa')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/d-prowser.prototype',
   reactStrictMode: true,
   swcMinify: true,
   compiler: { emotion: true },
