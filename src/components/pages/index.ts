@@ -1,2 +1,3 @@
-export * from './App'
-export * from './SignUp'
+export { App } from './App'
+export { SignIn } from './SignIn'
+export { SignUp } from './SignUp'

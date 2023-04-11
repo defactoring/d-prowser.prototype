@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { appContext } from '../context'
+import { appContext } from '@contexts'
 /**
  * ユーザー情報を提供する
  * @returns

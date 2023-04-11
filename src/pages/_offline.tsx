@@ -1,9 +1,11 @@
 import React from 'react'
 import { NextPage } from 'next'
-import { App } from '@pages'
+import { App, SignIn } from '@pages'
+import { useUser } from '@hooks'
 
 const Page: NextPage = () => {
-  return <App />
+  const { user } = useUser()
+  return <>{user === null ? <SignIn /> : <App user={user} />}</>
 }
 
 export default Page

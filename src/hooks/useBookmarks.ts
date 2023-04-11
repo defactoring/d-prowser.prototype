@@ -1,5 +1,5 @@
 import { useCallback, useContext } from 'react'
-import { bookmarksContext } from '../context'
+import { bookmarksContext } from '@contexts'
 import { useStorage } from './useStorage'
 import { get } from '@features/bookmark'
 

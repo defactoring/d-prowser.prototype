@@ -2,8 +2,8 @@ import React, { FormEventHandler, useCallback, useContext, useEffect, useState }
 import 'firebase/compat/auth'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { firebaseApp } from '@features/firebase'
-import { authContext } from '../../context'
-import * as A from '../atoms'
+import { authContext } from '@contexts'
+import * as A from '@atoms'
 import * as S from './style'
 import { Button, FormHelperText, TextField } from '@mui/material'
 import { z } from 'zod'
@@ -25,7 +25,7 @@ const schema = z.object({
  * サインイン画面を表示
  * @returns
  */
-const SignInScreen: React.FC = () => {
+export const SignIn: React.FC = () => {
   const { setUser } = useContext(authContext)
   const [error, setError] = useState<string | null>(null)
 
@@ -86,5 +86,3 @@ const SignInScreen: React.FC = () => {
     </S.Container>
   )
 }
-
-export default SignInScreen
