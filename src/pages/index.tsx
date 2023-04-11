@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NextPage } from 'next'
 import { App, SignIn } from '@pages'
-import { useUser } from '@hooks'
+import { authContext } from '@contexts'
 
 const Page: NextPage = () => {
-  const { user } = useUser()
+  const { user } = useContext(authContext)
   return <>{user === null ? <SignIn /> : <App user={user} />}</>
 }
 
