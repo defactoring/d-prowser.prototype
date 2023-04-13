@@ -4,8 +4,16 @@ import { authContext } from '@contexts'
 import { firebaseApp } from '@features/firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 
+/**
+ * 認証を利用するためのカスタムフック
+ */
 export const useAuth = () => {
   const { user, setUser } = useContext(authContext)
+  /**
+   * ログイン処理
+   * @param email
+   * @param password
+   */
   const signIn = async (email: string, password: string) => {
     return signInWithEmailAndPassword(firebaseApp.auth(), email, password).then(({ user }) => {
       setUser(user)
@@ -13,6 +21,9 @@ export const useAuth = () => {
     })
   }
 
+  /**
+   * ログアウト処理
+   */
   const signOut = async () => {
     return firebaseApp
       .auth()
@@ -22,7 +33,7 @@ export const useAuth = () => {
       })
   }
 
-  // Listen to the Firebase Auth state and set the local state.
+  // ユーザーが変更されたら、ユーザー情報を更新する
   useEffect(() => {
     const unregisterAuthObserver = firebaseApp.auth().onAuthStateChanged((user) => {
       setUser(user)

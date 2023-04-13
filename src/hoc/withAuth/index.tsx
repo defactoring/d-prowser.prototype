@@ -7,6 +7,12 @@ import { jsx } from '@emotion/react'
 import firebase from 'firebase/compat'
 import * as P from '@pages'
 
+/**
+ * 認証されたユーザーのみアクセス可能なページをラップする
+ * @param children
+ * @param user
+ * @constructor
+ */
 const Wrapped: React.FC<{ children: React.ReactNode; user: firebase.UserInfo }> = ({
   children,
   user,
@@ -25,6 +31,11 @@ const Wrapped: React.FC<{ children: React.ReactNode; user: firebase.UserInfo }> 
   )
 }
 
+/**
+ * 認証が必要なページに付与する
+ * もし認証されていない場合はサインインページを表示する
+ * @param Component
+ */
 export const withAuth = <P extends jsx.JSX.IntrinsicAttributes>(Component: React.FC<P>) => {
   const WithAuth = (props: P) => {
     const { user } = useAuth()
