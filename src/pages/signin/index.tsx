@@ -7,15 +7,12 @@ import { useRouter } from 'next/router'
 import { CircularProgress } from '@mui/material'
 
 const Page: NextPage = () => {
-  const [loading, setLoading] = React.useState(true)
-  const { user } = useAuth()
+  const { loading, user } = useAuth()
   const { push } = useRouter()
   useEffect(() => {
-    setLoading(true)
-    if (user !== null) push('/').then(() => setLoading(false))
-    return () => setLoading(false)
-  }, [user])
-  if (loading) return <CircularProgress />
+    if (!loading && user !== null) push('/')
+  }, [loading, user])
+  if (loading || user !== null) return <CircularProgress />
   return <SignIn />
 }
 
