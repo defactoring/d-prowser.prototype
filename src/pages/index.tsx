@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { NextPage } from 'next'
-import { App, SignIn } from '@pages'
-import { authContext } from '@contexts'
+import { App } from '@pages'
+import { withAuth } from '@hoc'
 
 const Page: NextPage = () => {
-  const { user } = useContext(authContext)
-  return <>{user === null ? <SignIn /> : <App user={user} />}</>
+  return <App />
 }
 
-export default Page
+export default withAuth(Page)

@@ -34,6 +34,7 @@
       "@templates": ["src/components/templates"],
       "@hooks": ["src/hooks"],
       "@contexts": ["src/contexts"],
+      "@hoc": ["src/hoc"],
       "@features/*": ["src/features/*"],
       "@themes": ["src/themes"]
     }
