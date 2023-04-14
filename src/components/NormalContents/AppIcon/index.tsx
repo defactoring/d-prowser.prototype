@@ -4,7 +4,7 @@ import { MoreHoriz } from '@mui/icons-material'
 import { useStorage, useBookmarks } from '@hooks'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { useCallback, MouseEventHandler } from 'react'
+import { useCallback } from 'react'
 import { remove, Bookmark } from '@features/bookmark/'
 
 type Props = {
@@ -34,8 +34,8 @@ export const AppIcon: React.FC<Props> = ({ open, bookmark }) => {
     remove(storage, bookmark.id).then(() => filter())
   }, [])
   const showConfirm = useCallback(() => {
-    if(confirm("ブックマークを削除しますか？") == true) removeBookmark()
-  },[])
+    if (confirm('ブックマークを削除しますか？') == true) removeBookmark()
+  }, [])
   return (
     <S.Container onContextMenu={handleContextMenu} ref={containerRef}>
       <S.Menu onClick={handleClick}>
