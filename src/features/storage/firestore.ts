@@ -4,7 +4,7 @@ import { doc, setDoc } from 'firebase/firestore'
 import { BookmarkStorage } from './type'
 import { firebaseApp } from '../firebase'
 import firebase from 'firebase/compat'
-import { BookmarkSearchParams } from '@features/bookmark/type'
+import { BookmarkSearchParams } from '@features/bookmark'
 
 export class FirestoreStorage implements BookmarkStorage {
   private readonly db = getFirestore(firebaseApp)

@@ -1,5 +1,4 @@
-import { Bookmark } from '../bookmark'
-import { BookmarkSearchParams } from '@features/bookmark/type'
+import { Bookmark, BookmarkSearchParams } from '../bookmark'
 
 export interface BookmarkStorage {
   /**

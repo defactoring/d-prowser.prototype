@@ -1,13 +1,10 @@
 import React from 'react'
-import { IconButton } from '@mui/material'
+import { IconButton, Toolbar, Menu, MenuItem } from '@mui/material'
 import { useAuth } from '@hooks'
 import * as S from './style'
 import * as A from '@atoms'
 import { useBookmarks } from './useBookmarks'
 import { AccountCircle } from '@mui/icons-material'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import Grid2 from '@mui/material/Unstable_Grid2'
 
 const _AppBar: React.FC = () => {
   const { signOut } = useAuth()
@@ -22,11 +19,9 @@ const _AppBar: React.FC = () => {
     setAnchorEl(null)
   }
   return (
-    <S.Container container>
-      <Grid2 flexGrow={1}>
+    <S.Container position='sticky'>
+      <Toolbar>
         <A.Search options={tags} onChange={onSearch} />
-      </Grid2>
-      <Grid2 container alignItems='center' justifyContent='center'>
         <IconButton
           size='large'
           aria-label='account of current user'
@@ -53,7 +48,7 @@ const _AppBar: React.FC = () => {
         >
           <MenuItem onClick={signOut}>Sign Out</MenuItem>
         </Menu>
-      </Grid2>
+      </Toolbar>
     </S.Container>
   )
 }

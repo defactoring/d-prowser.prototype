@@ -1,8 +1,6 @@
 import styled from '@emotion/styled'
-import Grid2 from '@mui/material/Unstable_Grid2'
+import { AppBar } from '@mui/material'
 
-export const Container = styled(Grid2)`
-  margin: 0 auto;
+export const Container = styled(AppBar)`
   background: ${({ theme }) => theme.colors.white};
-  max-width: 1280px;
 `
