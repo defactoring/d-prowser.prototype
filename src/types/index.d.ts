@@ -1,8 +1,12 @@
-import '@mui/material'
+import '@mui/material/styles'
 import '@emotion/react'
+import { Theme as MuiTheme } from '@mui/material/styles'
 
-declare module '@mui/material' {
+declare module '@mui/material/styles' {
   interface Theme {
+    colors: {
+      white: string
+    }
     devices: {
       mobile: `${number}px`
       tablet: `${number}px`
@@ -11,6 +15,9 @@ declare module '@mui/material' {
   }
 
   interface ThemeOptions {
+    colors: {
+      white: string
+    }
     devices: {
       mobile: `${number}px`
       tablet: `${number}px`
@@ -20,7 +27,10 @@ declare module '@mui/material' {
 }
 
 declare module '@emotion/react' {
-  export interface Theme {
+  interface Theme extends MuiTheme {
+    colors: {
+      white: string
+    }
     devices: {
       mobile: `${number}px`
       tablet: `${number}px`
