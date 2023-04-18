@@ -44,7 +44,7 @@ export const useBookmarkForm = ({ bookmark: _bookmark, onSuccess }: Props) => {
     defaultValues,
     resolver: zodResolver(schema),
   })
-  const { filter } = useBookmarks()
+  const { filter, bookmarks } = useBookmarks()
   const { storage } = useStorage()
   const onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
     handleSubmit(async (bookmark) => {
@@ -60,5 +60,12 @@ export const useBookmarkForm = ({ bookmark: _bookmark, onSuccess }: Props) => {
     [defaultValues, handleSubmit, storage, reset, onSuccess],
   )
   useEffect(() => reset(defaultValues), [reset, defaultValues])
-  return { register, control, onSubmit, errors, reset, tags: storage.tags }
+  return {
+    register,
+    control,
+    onSubmit,
+    errors,
+    reset,
+    tags: [...new Set(bookmarks.flatMap(({ tags }) => tags).filter((tag) => !!tag))],
+  }
 }

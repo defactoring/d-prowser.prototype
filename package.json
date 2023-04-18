@@ -42,7 +42,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "next build && next export",
+    "build": "next build",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*.{ts,tsx}' --config ./.prettierrc",
