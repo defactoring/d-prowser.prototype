@@ -1,4 +1,4 @@
-import { Bookmark } from './type'
+import { Bookmark, BookmarkSearchParams } from './type'
 import { BookmarkStorage } from '../storage'
 
 /**
@@ -7,5 +7,5 @@ import { BookmarkStorage } from '../storage'
  */
 export const get = async (
   storage: BookmarkStorage,
-  params?: { q?: string | null },
-): Promise<Bookmark[]> => (params?.q ? storage.search(params.q) : storage.read())
+  params?: BookmarkSearchParams,
+): Promise<Bookmark[]> => (params ? storage.search(params) : storage.read())

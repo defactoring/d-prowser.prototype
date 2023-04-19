@@ -1,4 +1,4 @@
-export type { Bookmark } from './type'
+export type { Bookmark, BookmarkSearchParams } from './type'
 export { create } from './create'
 export { get } from './get'
 export { add } from './add'

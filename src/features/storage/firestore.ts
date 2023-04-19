@@ -4,18 +4,13 @@ import { doc, setDoc } from 'firebase/firestore'
 import { BookmarkStorage } from './type'
 import { firebaseApp } from '../firebase'
 import firebase from 'firebase/compat'
+import { BookmarkSearchParams } from '@features/bookmark'
 
 export class FirestoreStorage implements BookmarkStorage {
   private readonly db = getFirestore(firebaseApp)
   private _bookmarks: Bookmark[] | null = null
 
   constructor(private readonly user: firebase.UserInfo) {}
-
-  get tags(): string[] {
-    return [
-      ...new Set((this._bookmarks ?? []).flatMap(({ tags }) => tags).filter((tag) => !!tag)),
-    ].sort()
-  }
 
   /**
    * DBのブックマークを再読み込みする
@@ -33,10 +28,21 @@ export class FirestoreStorage implements BookmarkStorage {
   /**
    * DBからブックマークを検索する
    */
-  async search(q: string): Promise<Bookmark[]> {
-    const bookmarks = await this.read()
-    if (q === '') return bookmarks
-    return bookmarks.filter(({ tags }) => (tags ?? []).includes(q))
+  async search(params: BookmarkSearchParams): Promise<Bookmark[]> {
+    let filtered = await this.read()
+
+    // qによるフィルタ
+    const q = (params.q ?? '').toLowerCase()
+    if (q !== '') filtered = filtered.filter((bookmark) => bookmark.name.toLowerCase().includes(q))
+
+    // tagsによるフィルタ
+    const tags = ([...new Set(params.tags)] ?? []).filter((tag) => !!tag)
+    if (tags.length > 0)
+      filtered = filtered.filter((bookmark) =>
+        tags.every((tag) => (bookmark.tags ?? []).includes(tag)),
+      )
+
+    return filtered
   }
 
   /**

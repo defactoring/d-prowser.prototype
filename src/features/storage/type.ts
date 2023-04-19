@@ -1,15 +1,10 @@
-import { Bookmark } from '../bookmark'
+import { Bookmark, BookmarkSearchParams } from '../bookmark'
 
 export interface BookmarkStorage {
   /**
-   * タグ一覧
-   */
-  tags: string[]
-
-  /**
    * DBからブックマークを検索
    */
-  search(q: string): Promise<Bookmark[]>
+  search(params: BookmarkSearchParams): Promise<Bookmark[]>
 
   /**
    * DBからブックマーク配列を取得

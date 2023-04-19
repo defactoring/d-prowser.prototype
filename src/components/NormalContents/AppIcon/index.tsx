@@ -5,7 +5,7 @@ import { useStorage, useBookmarks } from '@hooks'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useCallback } from 'react'
-import { remove, Bookmark } from '@features/bookmark/'
+import { remove, Bookmark } from '@features/bookmark'
 
 type Props = {
   open: () => void

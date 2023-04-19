@@ -2,10 +2,8 @@ import React from 'react'
 import * as S from './style'
 import { AppIcon } from '../AppIcon'
 import { AddIcon } from '../AddIcon'
-import { Search } from '@mui/icons-material'
 import { Bookmark } from '@features/bookmark'
-import { useBookmarks } from './useBookmarks'
-import { TextField } from '@mui/material'
+import { useBookmarks } from '@hooks'
 
 type Props = {
   open: (bookmark?: Bookmark) => void
@@ -16,21 +14,9 @@ type Props = {
  * 画面にアイコンオブジェクトを表示させる。
  */
 export const Contents: React.FC<Props> = ({ open }) => {
-  const { bookmarks, tags, onSearch } = useBookmarks()
+  const { bookmarks } = useBookmarks()
   return (
     <S.Container>
-      <S.Search>
-        <S.SearchIconWrapper>
-          <Search />
-        </S.SearchIconWrapper>
-        <S.SearchField
-          freeSolo
-          fullWidth
-          options={tags}
-          onInputChange={(_, value) => onSearch(value)}
-          renderInput={(params) => <TextField {...params} type='search' placeholder='Search…' />}
-        />
-      </S.Search>
       <S.AppContents>
         {bookmarks.map((bookmark) => {
           return (
