@@ -16,7 +16,7 @@ export const HoverCircle = styled.div`
   padding: 13px 13px 13px;
   border-radius: 50%;
   :hover {
-    background: #F2F2F2;
+    background: #f2f2f2;
   }
 `
 
