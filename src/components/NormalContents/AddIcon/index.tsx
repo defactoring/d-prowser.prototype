@@ -11,10 +11,12 @@ type Props = {
  */
 export const AddIcon: React.FC<Props> = ({ open }) => {
   return (
-    <Tooltip title='add'>
-      <S.Container role='button' aria-pressed={false} onClick={open}>
-        <S.Icon />
-      </S.Container>
-    </Tooltip>
+    <S.HoverCircle>
+      <Tooltip title='AddIcon'>
+        <S.Container role='button' aria-pressed={false} onClick={open}>
+          <S.Icon />
+        </S.Container>
+      </Tooltip>
+    </S.HoverCircle>
   )
 }

@@ -12,6 +12,13 @@ export const Container = styled.div`
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
   border-radius: 50%;
 `
+export const HoverCircle = styled.div`
+  padding: 13px 13px 13px;
+  border-radius: 50%;
+  :hover {
+    background: #F2F2F2;
+  }
+`
 
 export const Icon = styled(Add)`
   width: 72px;
