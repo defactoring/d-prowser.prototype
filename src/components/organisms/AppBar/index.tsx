@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IconButton, Toolbar, Menu, MenuItem } from '@mui/material'
 import { useAuth } from '@hooks'
 import * as S from './style'
@@ -8,7 +8,8 @@ import { AccountCircle } from '@mui/icons-material'
 
 const _AppBar: React.FC = () => {
   const { signOut } = useAuth()
-  const { tags, onSearch } = useBookmarks()
+  const { tags, onSearch, defaultValue: _defaultValue } = useBookmarks()
+  const [defaultValue] = useState(_defaultValue)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -21,7 +22,7 @@ const _AppBar: React.FC = () => {
   return (
     <S.Container position='sticky'>
       <Toolbar>
-        <A.Search options={tags} onChange={onSearch} />
+        <A.Search options={tags} onChange={onSearch} defaultValue={defaultValue} />
         <IconButton
           size='large'
           aria-label='account of current user'

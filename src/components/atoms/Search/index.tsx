@@ -5,10 +5,15 @@ import React from 'react'
 
 type Props = {
   options?: string[]
-  onChange?: (value: string) => void
+  onChange?: (value: string | null) => void
+  defaultValue?: string
 }
 
-export const Search: React.FC<Props> = ({ options = [], onChange = () => void 0 }) => {
+export const Search: React.FC<Props> = ({
+  options = [],
+  onChange = () => void 0,
+  defaultValue,
+}) => {
   return (
     <S.Container>
       <S.IconWrapper>
@@ -16,11 +21,11 @@ export const Search: React.FC<Props> = ({ options = [], onChange = () => void 0 
       </S.IconWrapper>
       <S.SearchField
         placeholder='Search…'
-        freeSolo
         fullWidth
         options={options}
-        onInputChange={(_, value) => onChange(value)}
-        renderInput={(params) => <TextField {...params} type='search' placeholder='Search…' />}
+        onChange={(_, value) => onChange(value)}
+        defaultValue={defaultValue}
+        renderInput={(params) => <TextField {...params} placeholder='Search…' />}
       />
     </S.Container>
   )

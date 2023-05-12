@@ -18,7 +18,7 @@ export const IconWrapper = styled.div`
   justify-content: center;
 `
 
-export const SearchField = styled(Autocomplete)`
+export const SearchField = styled(Autocomplete<string>)`
   & .MuiInputBase-root {
     padding-left: 42px;
     border-radius: 160px;

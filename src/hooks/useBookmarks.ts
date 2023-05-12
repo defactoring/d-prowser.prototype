@@ -9,6 +9,7 @@ export const useBookmarks = () => {
   const { bookmarks, setBookmarks } = useContext(bookmarksContext)
   const filter = useCallback(
     (params?: BookmarkSearchParams) => {
+      console.log(params)
       return get(storage, params).then(setBookmarks)
     },
     [storage, setBookmarks],
