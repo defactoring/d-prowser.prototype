@@ -2,8 +2,8 @@
 
 ## PreRequired
 
-- nodejs: v16.17
-- npm: v8.15
+- nodejs: v18
+- npm: v9
 
 ## Getting Started
 
