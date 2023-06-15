@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '@hooks'
-import { appContext, bookmarksContext } from '@contexts'
+import { appContext, bookmarksContext } from 'src/context'
 import { FirestoreStorage } from '@features/storage'
 import { Bookmark, get } from '@features/bookmark'
 import { jsx } from '@emotion/react'

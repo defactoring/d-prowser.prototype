@@ -3,7 +3,7 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import '../index.css'
 import { ThemeProvider } from '@mui/material'
-import { authContext } from '@contexts'
+import { authContext } from 'src/context'
 import { theme } from '@themes'
 import firebase from 'firebase/compat'
 

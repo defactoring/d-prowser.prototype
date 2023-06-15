@@ -33,7 +33,7 @@
       "@organisms": ["src/components/organisms"],
       "@templates": ["src/components/templates"],
       "@hooks": ["src/hooks"],
-      "@contexts": ["src/contexts"],
+      "@context": ["src/context"],
       "@hoc": ["src/hoc"],
       "@features/*": ["src/features/*"],
       "@themes": ["src/themes"]
