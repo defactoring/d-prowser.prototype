@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from '@hooks'
+import { useUser } from '@hooks'
 import { appContext, bookmarksContext } from 'src/context'
 import { FirestoreStorage } from '@features/storage'
 import { Bookmark, get } from '@features/bookmark'
 import { jsx } from '@emotion/react'
-import firebase from 'firebase/compat'
 import * as P from '@pages'
+import { User } from '@domain/user'
 
 /**
  * 認証されたユーザーのみアクセス可能なページをラップする
@@ -13,10 +13,7 @@ import * as P from '@pages'
  * @param user
  * @constructor
  */
-const Wrapped: React.FC<{ children: React.ReactNode; user: firebase.UserInfo }> = ({
-  children,
-  user,
-}) => {
+const Wrapped: React.FC<{ children: React.ReactNode; user: User }> = ({ children, user }) => {
   const storage = new FirestoreStorage(user)
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
   useEffect(() => {
@@ -38,7 +35,7 @@ const Wrapped: React.FC<{ children: React.ReactNode; user: firebase.UserInfo }> 
  */
 export const withAuth = <P extends jsx.JSX.IntrinsicAttributes>(Component: React.FC<P>) => {
   const WithAuth = (props: P) => {
-    const { user } = useAuth()
+    const { user } = useUser()
     if (user === null) return <P.SignIn />
     return (
       <Wrapped user={user}>

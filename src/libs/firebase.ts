@@ -1,4 +1,4 @@
-import app from 'firebase/compat/app'
+import { initializeApp } from 'firebase/app'
 
 // firebase設定
 const firebaseConfig = {
@@ -13,4 +13,4 @@ const firebaseConfig = {
 }
 
 // Firebase初期化
-export const firebaseApp = app.initializeApp(firebaseConfig)
+export const app = initializeApp(firebaseConfig)

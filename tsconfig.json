@@ -34,9 +34,12 @@
       "@templates": ["src/components/templates"],
       "@hooks": ["src/hooks"],
       "@context": ["src/context"],
+      "@stores": ["src/stores"],
       "@hoc": ["src/hoc"],
       "@features/*": ["src/features/*"],
-      "@themes": ["src/themes"]
+      "@themes": ["src/themes"],
+      "@domain/*": ["src/domain/*"],
+      "@libs/*": ["src/libs/*"],
     }
   },
   "include": [

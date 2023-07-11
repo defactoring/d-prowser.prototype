@@ -1,12 +1,11 @@
 import React, { useCallback, useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
 import * as S from './style'
 import { Button, FormHelperText, TextField } from '@mui/material'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { firebaseApp } from '@features/firebase'
 import { useRouter } from 'next/router'
+import { useAuth } from '@hooks'
 
 type Inputs = {
   email: string
@@ -19,12 +18,13 @@ const schema = z.object({
 })
 
 export const SignUp: React.FC = () => {
+  const { signUp } = useAuth()
   const router = useRouter()
   const [error, setError] = useState<string | null>(null)
   const { handleSubmit, register, formState } = useForm<Inputs>({ resolver: zodResolver(schema) })
   const onSubmit = useCallback(
     handleSubmit(async (data) => {
-      createUserWithEmailAndPassword(firebaseApp.auth(), data.email, data.password)
+      signUp(data.email, data.password)
         .then(() => {
           router.push('/')
         })
