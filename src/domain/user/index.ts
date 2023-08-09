@@ -3,6 +3,6 @@ export type User = {
   id: string
 }
 
-export const generateUser = (id: string): User => {
+export const buildUser = (id: string): User => {
   return { id } as User
 }
