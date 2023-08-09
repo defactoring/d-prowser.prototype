@@ -1,5 +1,4 @@
 import React, { FormEventHandler, useCallback, useState } from 'react'
-import 'firebase/compat/auth'
 import * as A from '@atoms'
 import * as S from './style'
 import { Button, FormHelperText, TextField } from '@mui/material'

@@ -1,19 +1,17 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { SignIn } from '@pages'
-import { useAuth } from '@hooks'
+import { useUser } from '@hooks'
 import { NextPage } from 'next'
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { CircularProgress } from '@mui/material'
+import { Redirect } from '../../components/atoms/Redirect'
 
 const Page: NextPage = () => {
-  const { loading, user } = useAuth()
-  const { push } = useRouter()
-  useEffect(() => {
-    if (!loading && user !== null) push('/')
-  }, [loading, user])
-  if (loading || user !== null) return <CircularProgress />
-  return <SignIn />
+  const { user } = useUser()
+  return (
+    <Suspense fallback={<CircularProgress />}>
+      {user !== null ? <Redirect href='/' /> : <SignIn />}
+    </Suspense>
+  )
 }
 
 export default Page

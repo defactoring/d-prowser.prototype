@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import '../index.css'
 import { ThemeProvider } from '@mui/material'
-import { authContext } from '@contexts'
 import { theme } from '@themes'
-import firebase from 'firebase/compat'
+import { RecoilRoot } from 'recoil'
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const [user, setUser] = useState<firebase.UserInfo | null>(null)
   return (
     <>
       <Head>
@@ -21,11 +19,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel='manifest' href='/d-prowser.prototype/manifest.json' />
         <title>d-prowser</title>
       </Head>
-      <ThemeProvider theme={theme}>
-        <authContext.Provider value={{ user, setUser }}>
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
           <Component {...pageProps} />
-        </authContext.Provider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </RecoilRoot>
     </>
   )
 }

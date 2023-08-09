@@ -2,22 +2,22 @@ import { getFirestore, collection, getDocs, deleteDoc, updateDoc, query } from '
 import { Bookmark } from '../bookmark'
 import { doc, setDoc } from 'firebase/firestore'
 import { BookmarkStorage } from './type'
-import { firebaseApp } from '../firebase'
-import firebase from 'firebase/compat'
+import { app } from '@libs/firebase'
 import { BookmarkSearchParams } from '@features/bookmark'
+import { User } from '@domain/user'
 
 export class FirestoreStorage implements BookmarkStorage {
-  private readonly db = getFirestore(firebaseApp)
+  private readonly db = getFirestore(app)
   private _bookmarks: Bookmark[] | null = null
 
-  constructor(private readonly user: firebase.UserInfo) {}
+  constructor(private readonly user: User) {}
 
   /**
    * DBのブックマークを再読み込みする
    */
   private async _refresh(): Promise<Bookmark[]> {
     const bookmarks = await getDocs(
-      query(collection(this.db, 'users', this.user.uid, 'bookmarks')),
+      query(collection(this.db, 'users', this.user.id, 'bookmarks')),
     ).then((snapshot) => snapshot.docs.map((doc) => doc.data()))
     this._bookmarks = (bookmarks as Bookmark[]).sort((a, b) =>
       a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
@@ -57,7 +57,7 @@ export class FirestoreStorage implements BookmarkStorage {
    * DBにブックマークを登録
    */
   async create(bookmark: Bookmark): Promise<void> {
-    await setDoc(doc(this.db, 'users', this.user.uid, 'bookmarks', bookmark.id), bookmark)
+    await setDoc(doc(this.db, 'users', this.user.id, 'bookmarks', bookmark.id), bookmark)
     await this._refresh()
   }
 
@@ -65,7 +65,7 @@ export class FirestoreStorage implements BookmarkStorage {
    * DBのブックマークを削除
    */
   async delete(id: Bookmark['id']): Promise<void> {
-    await deleteDoc(doc(this.db, 'users', this.user.uid, 'bookmarks', id))
+    await deleteDoc(doc(this.db, 'users', this.user.id, 'bookmarks', id))
     await this._refresh()
   }
 
@@ -73,7 +73,7 @@ export class FirestoreStorage implements BookmarkStorage {
    * DBのブックマークを変更
    */
   async update(bookmark: Bookmark): Promise<void> {
-    await updateDoc(doc(this.db, 'users', this.user.uid, 'bookmarks', bookmark.id), bookmark)
+    await updateDoc(doc(this.db, 'users', this.user.id, 'bookmarks', bookmark.id), bookmark)
     await this._refresh()
   }
 }

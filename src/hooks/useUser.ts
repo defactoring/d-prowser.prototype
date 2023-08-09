@@ -1,10 +1,11 @@
-import { useContext } from 'react'
-import { appContext } from '@contexts'
+import { useRecoilValue } from 'recoil'
+import { userState } from '@stores'
+
 /**
  * ユーザー情報を提供する
  * @returns
  */
 export const useUser = () => {
-  const { user } = useContext(appContext)
+  const user = useRecoilValue(userState)
   return { user }
 }
